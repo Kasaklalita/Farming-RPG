@@ -10,7 +10,7 @@ public delegate void MovementDelegate(
     bool isLiftingToolRight, bool isLiftingToolLeft, bool isLiftingToolUp, bool isLiftingToolDown,
     bool isPickingRight, bool isPickingLeft, bool isPickingUp, bool isPickingDown,
     bool isSwingingToolRight, bool isSwingingToolLeft, bool isSwingingToolUp, bool isSwingingToolDown,
-    bool idleUp, bool idleDown, bool idleLedt, bool idleRight);
+    bool idleUp, bool idleDown, bool idleLeft, bool idleRight);
 
 public static class EventHandler
 {
@@ -30,7 +30,7 @@ public static class EventHandler
         bool isLiftingToolRight, bool isLiftingToolLeft, bool isLiftingToolUp, bool isLiftingToolDown,
         bool isPickingRight, bool isPickingLeft, bool isPickingUp, bool isPickingDown,
         bool isSwingingToolRight, bool isSwingingToolLeft, bool isSwingingToolUp, bool isSwingingToolDown,
-        bool idleUp, bool idleDown, bool idleLedt, bool idleRight)
+        bool idleUp, bool idleDown, bool idleLeft, bool idleRight)
     {
         if (MovementEvent != null)
         {
@@ -46,7 +46,7 @@ public static class EventHandler
                 isLiftingToolRight, isLiftingToolLeft, isLiftingToolUp, isLiftingToolDown,
                 isPickingRight, isPickingLeft, isPickingUp, isPickingDown,
                 isSwingingToolRight, isSwingingToolLeft, isSwingingToolUp, isSwingingToolDown,
-                idleUp, idleDown, idleLedt, idleRight);
+                idleUp, idleDown, idleLeft, idleRight);
         }
     }
 }
