@@ -65548,6 +65548,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: WildOakScenary
       objectReference: {fileID: 0}
+    - target: {fileID: 5235606356559426708, guid: 338ae40d65dbef441afb75e30e1f665d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5235606356559426708, guid: 338ae40d65dbef441afb75e30e1f665d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5235606356559426708, guid: 338ae40d65dbef441afb75e30e1f665d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 338ae40d65dbef441afb75e30e1f665d, type: 3}
 --- !u!4 &5875679737741974246 stripped

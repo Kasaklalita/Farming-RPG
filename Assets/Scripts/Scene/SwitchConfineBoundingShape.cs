@@ -18,8 +18,6 @@ public class SwitchConfineBoundingShape : MonoBehaviour
         CinemachineConfiner cinemachineConfiner = GetComponent<CinemachineConfiner>();
         cinemachineConfiner.m_BoundingShape2D = polygonCollider2D;
 
-        Debug.Log(cinemachineConfiner);
-
         //Since the confiner bounds have changed need to call this to clear the cache
         cinemachineConfiner.InvalidatePathCache();
     }

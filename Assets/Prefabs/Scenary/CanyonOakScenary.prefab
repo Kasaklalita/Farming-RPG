@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2991241775459675161}
   - component: {fileID: 543500912284492911}
+  - component: {fileID: 494947229067991143}
+  - component: {fileID: 6642755358577869207}
   m_Layer: 0
   m_Name: CanyonOakScenary
   m_TagString: Untagged
@@ -83,6 +85,44 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!61 &494947229067991143
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88990557111696601}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 3}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 3, y: 6}
+    newSize: {x: 3, y: 6}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3, y: 6}
+  m_EdgeRadius: 0
+--- !u!114 &6642755358577869207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88990557111696601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ceff4057db369a4998410c12fecea49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &745216821747817079
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1481506870103220804}
   - component: {fileID: 1331426769397686925}
+  - component: {fileID: 3317775743364238414}
   m_Layer: 0
   m_Name: Trunk
   m_TagString: Untagged
@@ -165,3 +206,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!114 &3317775743364238414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745216821747817079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ceff4057db369a4998410c12fecea49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
