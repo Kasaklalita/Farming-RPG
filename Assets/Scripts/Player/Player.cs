@@ -30,6 +30,8 @@ public class Player : SingletonMonobehaviour<Player>
     private bool isSwingingToolUp;
     private bool isSwingingToolDown;
 
+    private Camera mainCamera;
+
     private ToolEffect toolEffect = ToolEffect.none;
     private Rigidbody2D rigidBody2D;
     #pragma warning disable 414
@@ -44,6 +46,8 @@ public class Player : SingletonMonobehaviour<Player>
         base.Awake();
 
         rigidBody2D = GetComponent<Rigidbody2D>();
+
+        mainCamera = Camera.main;
     }
 
     private void Update()
@@ -166,5 +170,11 @@ public class Player : SingletonMonobehaviour<Player>
             isIdle = false;
             movementSpeed = Settings.runningSpeed;
         }
+    }
+
+    public Vector3 GetPlayerViewportPosition()
+    {
+        //Vector3 viewport position for player ((0,0) viewport bottom, (1,1) viewport top right
+        return mainCamera.WorldToViewportPoint(transform.position);
     }
 }
