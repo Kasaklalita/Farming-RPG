@@ -3,7 +3,6 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     [ItemCodeDescription]
-    [Range(10000, 10100)]
     [SerializeField]
     private int _itemCode;
     public int ItemCode { get { return _itemCode; } set { _itemCode = value; } }
@@ -25,6 +24,16 @@ public class Item : MonoBehaviour
 
     public void Init(int itemCodeParam)
     {
+        if (itemCodeParam != 0)
+        {
+            ItemCode = itemCodeParam;
+            ItemDetails itemDetails = InventoryManager.Instance.GetItemDetails(ItemCode);
+            spriteRenderer.sprite = itemDetails.itemSprite;
 
+            if (itemDetails.itemType == ItemType.Reapable_scenary)
+            {
+                gameObject.AddComponent<ItemNudge>();
+            }
+        }
     }
 }
