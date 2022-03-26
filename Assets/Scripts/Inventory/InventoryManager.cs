@@ -124,6 +124,28 @@ public class InventoryManager : SingletonMonobehaviour<InventoryManager>
     }
 
     /// <summary>
+    /// Swap item at fromItem index with item at toItem index in inventoryLocation inventory list
+    /// </summary>
+    /// <param name="inventoryLocation"></param>
+    /// <param name="fromItem"></param>
+    /// <param name="toItem"></param>
+    public void SwapInventoryItems(InventoryLocation inventoryLocation, int fromItem, int toItem)
+    {
+        //If fromItem index and toItem index are within the bounds of the list, not the same, and greater than or equal to zero
+        if (fromItem < inventoryLists[(int)inventoryLocation].Count && toItem < inventoryLists[(int)inventoryLocation].Count && fromItem != toItem && fromItem >= 0 && toItem >= 0)
+        {
+            InventoryItem fromInventoryItem = inventoryLists[(int)inventoryLocation][fromItem];
+            InventoryItem toInventoryItem = inventoryLists[(int)inventoryLocation][toItem];
+
+            inventoryLists[(int)inventoryLocation][toItem] = fromInventoryItem;
+            inventoryLists[(int)inventoryLocation][fromItem] = toInventoryItem;
+
+            //Send event that inventory has been updated
+            EventHandler.CallInventoryUpdatedEvent(inventoryLocation, inventoryLists[(int)inventoryLocation]);
+        }
+    }
+
+    /// <summary>
     /// Find if an itemCode is already in the inventory. Returns the item position in the inventory list,
     /// or -1 if the item is not in the inventory
     /// </summary>
