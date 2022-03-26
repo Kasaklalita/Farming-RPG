@@ -5,6 +5,8 @@ public class InventoryManager : SingletonMonobehaviour<InventoryManager>
 {
     private Dictionary<int, ItemDetails> itemDetailsDectionary;
 
+    private int[] selectedInventoryItem; //The index of the array is the inventory list, and the value is the item code;
+
     public List<InventoryItem>[] inventoryLists;
 
     //The index of the array is the inventory list (from the EnventoryLocation enum), and the value is the capacity of that inventory list
@@ -19,6 +21,14 @@ public class InventoryManager : SingletonMonobehaviour<InventoryManager>
         CreateInventoryLists();
 
         CreateItemDetailsDictionary();
+
+        //Initialise selected inventory item array
+        selectedInventoryItem = new int[(int)InventoryLocation.count];
+
+        for (int i = 0; i < selectedInventoryItem.Length; i++)
+        {
+            selectedInventoryItem[i] = -1;
+        }
     }
 
     private void CreateInventoryLists()
@@ -146,6 +156,15 @@ public class InventoryManager : SingletonMonobehaviour<InventoryManager>
     }
 
     /// <summary>
+    /// Clear the selected inventory item for inventoryLocation
+    /// </summary>
+    /// <param name="inventoryLocation"></param>
+    public void ClearSelectedInventoryItem(InventoryLocation inventoryLocation)
+    {
+        selectedInventoryItem[(int)inventoryLocation] = -1;
+    }
+
+    /// <summary>
     /// Find if an itemCode is already in the inventory. Returns the item position in the inventory list,
     /// or -1 if the item is not in the inventory
     /// </summary>
@@ -270,6 +289,16 @@ public class InventoryManager : SingletonMonobehaviour<InventoryManager>
         {
             inventoryList.RemoveAt(position);
         }
+    }
+
+    /// <summary>
+    /// Set the selected inventory item for inventoryLocation to itemCode
+    /// </summary>
+    /// <param name="inventoryLocation"></param>
+    /// <param name="itemCode"></param>
+    public void SetSelectedInventoryItem(InventoryLocation inventoryLocation, int itemCode)
+    {
+        selectedInventoryItem[(int)inventoryLocation] = itemCode;
     }
 
     //private void DebugPrintInventoryList(List<InventoryItem> inventoryList)
