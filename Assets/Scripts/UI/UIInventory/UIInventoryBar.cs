@@ -61,7 +61,7 @@ public class UIInventoryBar : MonoBehaviour
         if (inventorySlot.Length > 0)
         {
             //Loop through inventory slots and update with blank sprite
-            for (int i = 0; i < inventorySlot.Length - 1; i++)
+            for (int i = 0; i < inventorySlot.Length; i++)
             {
                 inventorySlot[i].inventorySlotImage.sprite = blank16x16sprite;
                 //inventorySlot[i].textMeshProUGUI.text = "";
@@ -140,7 +140,7 @@ public class UIInventoryBar : MonoBehaviour
             if (inventorySlot.Length > 0 && inventoryList.Count > 0)
             {
                 //Loop through inventory slots and update with corresponding inventory list item
-                for (int i = 0; i < inventorySlot.Length - 1; i++)
+                for (int i = 0; i < inventorySlot.Length; i++)
                 {
                     if (i < inventoryList.Count)
                     {
