@@ -62,6 +62,15 @@ public enum PartVariantType
     count
 }
 
+public enum Season
+{
+    Spring,
+    Summer,
+    Autumn,
+    Winter,
+    count
+}
+
 public enum InventoryLocation
 {
     player,
