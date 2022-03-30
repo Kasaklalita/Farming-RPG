@@ -91,4 +91,30 @@ public class TimeManager : SingletonMonobehaviour<TimeManager>
             Debug.Log("Game Year: " + gameYear + "\tGame Season: " + gameSeason + "\tGame Day: " + gameDay + "\tGame Hour: " + gameHour + "\tGame Minute: " + gameMinute);
         }
     }
+
+    private string GetDayOfWeek()
+    {
+        int totalDays = (((int)gameSeason) * 30) + gameDay;
+        int dayOfWeek = totalDays % 7;
+
+        switch (dayOfWeek)
+        {
+            case 1:
+                return "Mon";
+            case 2:
+                return "Tue";
+            case 3:
+                return "Wed";
+            case 4:
+                return "Thu";
+            case 5:
+                return "Fri";
+            case 6:
+                return "Sat";
+            case 7:
+                return "Sun";
+            default:
+                return "";
+        }
+    }
 }
