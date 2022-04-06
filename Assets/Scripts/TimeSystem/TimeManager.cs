@@ -74,6 +74,11 @@ public class TimeManager : SingletonMonobehaviour<TimeManager>
 
                             gameYear++;
 
+                            if (gameYear > 9999)
+                            {
+                                gameYear = 1;
+                            }
+
                             EventHandler.CallAdvanceGameDayEvent(gameYear, gameSeason, gameDay, gameDayOfWeek, gameHour, gameMinute, gameSecond);
                         }
 
@@ -88,7 +93,7 @@ public class TimeManager : SingletonMonobehaviour<TimeManager>
             }
 
             EventHandler.CallAdvanceGameMinuteEvent(gameYear, gameSeason, gameDay, gameDayOfWeek, gameHour, gameMinute, gameSecond);
-            Debug.Log("Game Year: " + gameYear + "\tGame Season: " + gameSeason + "\tGame Day: " + gameDay + "\tGame Hour: " + gameHour + "\tGame Minute: " + gameMinute);
+            //Debug.Log("Game Year: " + gameYear + "\tGame Season: " + gameSeason + "\tGame Day: " + gameDay + "\tGame Hour: " + gameHour + "\tGame Minute: " + gameMinute);
         }
     }
 
@@ -111,10 +116,32 @@ public class TimeManager : SingletonMonobehaviour<TimeManager>
                 return "Fri";
             case 6:
                 return "Sat";
-            case 7:
+            case 0:
                 return "Sun";
             default:
                 return "";
+        }
+    }
+
+    /// <summary>
+    /// Advance 1 game minute
+    /// </summary>
+    public void TestAdvanceGameMinute()
+    {
+        for (int i = 0; i < 60; i++)
+        {
+            UpdateGameSecond();
+        }
+    }
+
+    /// <summary>
+    /// Advance 1 game day
+    /// </summary>
+    public void TestAdvanceGameDay()
+    {
+        for (int i = 0; i < 86400; i++)
+        {
+            UpdateGameSecond();
         }
     }
 }

@@ -79,6 +79,7 @@ public class Player : SingletonMonobehaviour<Player>
             ResetAnimationTriggers();
             PlayerMovementInput();
             PlayerWalkInput();
+            PlayerTestInput();
             EventHandler.CallMovementEvent(
                 xInput,
                 yInput,
@@ -193,6 +194,21 @@ public class Player : SingletonMonobehaviour<Player>
             isWalking = false;
             isIdle = false;
             movementSpeed = Settings.runningSpeed;
+        }
+    }
+
+    /// <summary>
+    /// Temp routine for test input
+    /// </summary>
+    private void PlayerTestInput()
+    {
+        if (Input.GetKey(KeyCode.T))
+        {
+            TimeManager.Instance.TestAdvanceGameMinute();
+        }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            TimeManager.Instance.TestAdvanceGameDay();
         }
     }
 

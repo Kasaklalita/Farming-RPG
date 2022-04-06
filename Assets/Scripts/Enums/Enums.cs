@@ -62,6 +62,13 @@ public enum PartVariantType
     count
 }
 
+public enum ScaneName
+{
+    Scene1_Farm,
+    Scene2_Field,
+    Scene3_Cabin
+}
+
 public enum Season
 {
     Spring,
