@@ -62,7 +62,7 @@ public enum PartVariantType
     count
 }
 
-public enum ScaneName
+public enum SceneName
 {
     Scene1_Farm,
     Scene2_Field,
