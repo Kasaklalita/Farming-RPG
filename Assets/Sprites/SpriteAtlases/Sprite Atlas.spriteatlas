@@ -61,6 +61,9 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f0d720006ae6c9e468cc99a9f1713ba1, type: 3}
   - {fileID: 21300000, guid: 25925800440b0e84f9533a314ddca6b5, type: 3}
   - {fileID: 21300000, guid: 7da78110e28e0f74aaa3ef4a41f4c0ed, type: 3}
+  - {fileID: 21300000, guid: 9a255440ece76a447b2c3a24545163d8, type: 3}
+  - {fileID: 21300000, guid: 9c7ecf718d8dc2d4caf8dfba9fec2fda, type: 3}
+  - {fileID: 21300000, guid: 1cbbb69130e75aa45a5f6f3338654d4e, type: 3}
   - {fileID: 21300000, guid: 207ad99171e171b418bcaaa396d5a6f6, type: 3}
   - {fileID: 21300000, guid: aa1fcd9144ccf574985824378256b95c, type: 3}
   - {fileID: 21300000, guid: 8298ab725cafa93429a58bd3e8273289, type: 3}
@@ -95,6 +98,8 @@ SpriteAtlas:
   - {fileID: 4005202913230342895, guid: 2d0dfd935517f7049a9ec156af517511, type: 3}
   - {fileID: 5613540868099651934, guid: 2d0dfd935517f7049a9ec156af517511, type: 3}
   - {fileID: -2514537956183521370, guid: 2d0dfd935517f7049a9ec156af517511, type: 3}
+  - {fileID: 21300000, guid: 97b5f1442fa836c4295d1ff47e7707ec, type: 3}
+  - {fileID: 21300000, guid: a71d2274ed1b6f447b84d274f7429059, type: 3}
   - {fileID: -6853649311568494795, guid: fec47794c20ce834da941a7b4e8caa07, type: 3}
   - {fileID: 1549225131909812281, guid: fec47794c20ce834da941a7b4e8caa07, type: 3}
   - {fileID: -2634811762275802146, guid: fec47794c20ce834da941a7b4e8caa07, type: 3}
@@ -110,6 +115,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 60f7a57556be87841a8cabc94054df28, type: 3}
   - {fileID: 21300000, guid: 7700e9e59e6f58e4598ea8f2e5a84cc1, type: 3}
   - {fileID: 21300000, guid: 5eb84bf51d351da428f95a1296f6a397, type: 3}
+  - {fileID: 21300000, guid: 32951a16a8b26b14da5149528112309e, type: 3}
   - {fileID: -3838475676277424314, guid: b8a1ee46b6ce11a4d8368beea7dd0051, type: 3}
   - {fileID: -7931138795965189215, guid: b8a1ee46b6ce11a4d8368beea7dd0051, type: 3}
   - {fileID: 7109555171503141768, guid: b8a1ee46b6ce11a4d8368beea7dd0051, type: 3}
@@ -198,6 +204,8 @@ SpriteAtlas:
   - {fileID: 6019493940114240039, guid: d241c496741a12d4290e12ba81dd6724, type: 3}
   - {fileID: 4789355601316357596, guid: d241c496741a12d4290e12ba81dd6724, type: 3}
   - {fileID: 21300000, guid: e26dc0d638731ec47abe9c4b3cae62ac, type: 3}
+  - {fileID: 21300000, guid: 4222200706cc52e498461dce192a3aff, type: 3}
+  - {fileID: 21300000, guid: fb2f75372a34fb449924d29f5d279e75, type: 3}
   - {fileID: 21300000, guid: 2e92a61802edadc4495e4d901e3a97cb, type: 3}
   - {fileID: 21300000, guid: 37e09848a493a0a4b89a743f73f75963, type: 3}
   - {fileID: 21300000, guid: 4fb548784c08c2c40b86a99493efa98d, type: 3}
@@ -812,6 +820,7 @@ SpriteAtlas:
   - {fileID: -2591857847239701004, guid: 3178799b764c8f14f821ba06edc51375, type: 3}
   - {fileID: 719774538432170253, guid: 3178799b764c8f14f821ba06edc51375, type: 3}
   - {fileID: 5304089592871775321, guid: 3178799b764c8f14f821ba06edc51375, type: 3}
+  - {fileID: 21300000, guid: 9b4171bb2f139914f8b20c0e46c1a263, type: 3}
   - {fileID: 21300000, guid: 898d91cb190da4b479714f63ae8519e0, type: 3}
   - {fileID: 21300000, guid: 730e572c78cf0244ca0db36bb8f3af7f, type: 3}
   - {fileID: 21300000, guid: 2a61f48c8f2dfed4da6f2f8e2485ee15, type: 3}
@@ -895,6 +904,9 @@ SpriteAtlas:
   - Pumpkin
   - Weed1
   - ParsnipSeeds
+  - One Fourth Collision Tile
+  - Three Eighths Collision Tile
+  - Three Eighths 2 Collision Tile
   - Grass1
   - Clock
   - TumbleweedThistle
@@ -929,6 +941,8 @@ SpriteAtlas:
   - Butch_Portrait_0
   - Butch_Portrait_1
   - Butch_Portrait_2
+  - Three Fourths Collision Tile
+  - Seven Eighths Collision Tile
   - effects_8
   - effects_9
   - effects_6
@@ -944,6 +958,7 @@ SpriteAtlas:
   - Table
   - Stone
   - PineCone
+  - Stalagmite
   - Farmhouse1_33
   - Farmhouse1_23
   - Farmhouse1_22
@@ -1032,6 +1047,8 @@ SpriteAtlas:
   - CanyonOak_1
   - CanyonOak_0
   - Wood
+  - Five Eighths Collision Tile
+  - Six Eighths Collision Tile
   - GreenGridCursor
   - Cactus1
   - Stone1Seed
@@ -1646,6 +1663,7 @@ SpriteAtlas:
   - Cora_Portrait_1
   - Cora_Portrait_0
   - Cora_Portrait_2
+  - One Eighth Collision Tile
   - GreenCursor
   - Acorn
   - Chair

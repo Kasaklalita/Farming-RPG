@@ -21,7 +21,7 @@ public class SceneControllerManager : SingletonMonobehaviour<SceneControllerMana
         faderCanvarGroup.blocksRaycasts = true;
 
         //Calculate how fast the CanverGroup should fade based on its current alpha, its final alpha and how long it has to change between the two
-        float fadeSpeed = Mathf.Abs(faderCanvarGroup.alpha - finalAlpha) / fadeDuration;
+        float fadeSpeed = Mathf.Abs(faderCanvarGroup.alpha - finalAlpha ) / fadeDuration;
 
         //While the CanvasGroup hasn`t reached the final alpha yet...
         while (!Mathf.Approximately(faderCanvarGroup.alpha, finalAlpha))
