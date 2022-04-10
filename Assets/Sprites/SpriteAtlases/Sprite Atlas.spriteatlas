@@ -62,6 +62,8 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 25925800440b0e84f9533a314ddca6b5, type: 3}
   - {fileID: 21300000, guid: 7da78110e28e0f74aaa3ef4a41f4c0ed, type: 3}
   - {fileID: 21300000, guid: 9a255440ece76a447b2c3a24545163d8, type: 3}
+  - {fileID: 21300000, guid: e12726a0ec1af454c972561884fa8e03, type: 3}
+  - {fileID: 21300000, guid: 4b2c0c11fe5e56d4d90370e1bdcda9aa, type: 3}
   - {fileID: 21300000, guid: 9c7ecf718d8dc2d4caf8dfba9fec2fda, type: 3}
   - {fileID: 21300000, guid: 1cbbb69130e75aa45a5f6f3338654d4e, type: 3}
   - {fileID: 21300000, guid: 207ad99171e171b418bcaaa396d5a6f6, type: 3}
@@ -98,6 +100,8 @@ SpriteAtlas:
   - {fileID: 4005202913230342895, guid: 2d0dfd935517f7049a9ec156af517511, type: 3}
   - {fileID: 5613540868099651934, guid: 2d0dfd935517f7049a9ec156af517511, type: 3}
   - {fileID: -2514537956183521370, guid: 2d0dfd935517f7049a9ec156af517511, type: 3}
+  - {fileID: 21300000, guid: 5f14b0f3da5cb054e83d91ddeac16f9e, type: 3}
+  - {fileID: 21300000, guid: b951bd34abd613247accbe265b5ae5c1, type: 3}
   - {fileID: 21300000, guid: 97b5f1442fa836c4295d1ff47e7707ec, type: 3}
   - {fileID: 21300000, guid: a71d2274ed1b6f447b84d274f7429059, type: 3}
   - {fileID: -6853649311568494795, guid: fec47794c20ce834da941a7b4e8caa07, type: 3}
@@ -817,6 +821,7 @@ SpriteAtlas:
   - {fileID: -2485526237100873097, guid: 0f48021b42b3b4342b1829669a8ec65d, type: 3}
   - {fileID: -8079878080289612398, guid: 0f48021b42b3b4342b1829669a8ec65d, type: 3}
   - {fileID: 21300000, guid: 622c962bd2dcb0d42abf3a4696d0bee9, type: 3}
+  - {fileID: 21300000, guid: c788044b013374d4989cfd07b26c6d60, type: 3}
   - {fileID: -2591857847239701004, guid: 3178799b764c8f14f821ba06edc51375, type: 3}
   - {fileID: 719774538432170253, guid: 3178799b764c8f14f821ba06edc51375, type: 3}
   - {fileID: 5304089592871775321, guid: 3178799b764c8f14f821ba06edc51375, type: 3}
@@ -905,6 +910,8 @@ SpriteAtlas:
   - Weed1
   - ParsnipSeeds
   - One Fourth Collision Tile
+  - Four Eighths Collision Tile
+  - Collision Tile Diagonal 3
   - Three Eighths Collision Tile
   - Three Eighths 2 Collision Tile
   - Grass1
@@ -941,6 +948,8 @@ SpriteAtlas:
   - Butch_Portrait_0
   - Butch_Portrait_1
   - Butch_Portrait_2
+  - One Eighth 2 Collision Tile
+  - Collision Tile Diagonal 2
   - Three Fourths Collision Tile
   - Seven Eighths Collision Tile
   - effects_8
@@ -1660,6 +1669,7 @@ SpriteAtlas:
   - GroundTileset_108
   - GroundTileset_212
   - DialogueBox
+  - One Fourth 2 Collision Tile
   - Cora_Portrait_1
   - Cora_Portrait_0
   - Cora_Portrait_2

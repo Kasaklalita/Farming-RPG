@@ -1128,7 +1128,7 @@ MonoBehaviour:
   fadeDuration: 1
   faderCanvarGroup: {fileID: 552854481}
   faderImage: {fileID: 552854482}
-  startingSceneName: 0
+  startingSceneName: 4
 --- !u!4 &445354440
 Transform:
   m_ObjectHideFlags: 0
@@ -1340,7 +1340,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.44246173, g: 0.5754717, b: 0.45352823, a: 0}
+  m_BackGroundColor: {r: 0.15294118, g: 0.08627451, b: 0.050980397, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1381,7 +1381,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -25.465614}
+  m_LocalPosition: {x: 0, y: -4.14, z: -25.465614}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3261,8 +3261,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1556400602}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -15.465613}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -4.14, z: -15.465613}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 728947650}
   - {fileID: 242856293}
@@ -3492,7 +3492,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1586032823}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -25.465614}
+  m_LocalPosition: {x: 0, y: -4.14, z: -25.465614}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1203025134}
