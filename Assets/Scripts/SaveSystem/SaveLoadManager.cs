@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SaveLoadManager : SingletonMonobehaviour<SaveLoadManager>
@@ -14,8 +17,8 @@ public class SaveLoadManager : SingletonMonobehaviour<SaveLoadManager>
 
     public void StoreCurrentSceneData()
     {
-        //Loop through all ISaveable objects and trigger store scene data for each
-        foreach(ISaveable iSaveableObject in iSaveableObjectList)
+        // loop through all ISaveable objects and trigger store scene data for each
+        foreach (ISaveable iSaveableObject in iSaveableObjectList)
         {
             iSaveableObject.ISaveableStoreScene(SceneManager.GetActiveScene().name);
         }
@@ -23,7 +26,7 @@ public class SaveLoadManager : SingletonMonobehaviour<SaveLoadManager>
 
     public void RestoreCurrentSceneData()
     {
-        //Loop through all ISaveable objects and trigger restore scene data for each
+        // loop through all ISaveable objects and trigger restore scene data for each
         foreach (ISaveable iSaveableObject in iSaveableObjectList)
         {
             iSaveableObject.ISaveableRestoreScene(SceneManager.GetActiveScene().name);

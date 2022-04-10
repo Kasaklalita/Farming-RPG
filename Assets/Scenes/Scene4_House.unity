@@ -605,11 +605,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7071861304750897672, guid: 939ee5a900283844eb931ffec2a7b0c0, type: 3}
       propertyPath: scenePositionGoto.x
-      value: 1
+      value: 26.75
       objectReference: {fileID: 0}
     - target: {fileID: 7071861304750897672, guid: 939ee5a900283844eb931ffec2a7b0c0, type: 3}
       propertyPath: scenePositionGoto.y
-      value: 27
+      value: 15.2
       objectReference: {fileID: 0}
     - target: {fileID: 8870744023843681299, guid: 939ee5a900283844eb931ffec2a7b0c0, type: 3}
       propertyPath: m_Size.y
