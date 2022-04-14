@@ -1,8 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class Player : SingletonMonobehaviour<Player>
 {
+    private WaitForSeconds afterUseToolAnimationPause;
     private AnimationOverrides animationOverrides;
     private GridCursor gridCursor;
 
@@ -35,12 +37,14 @@ public class Player : SingletonMonobehaviour<Player>
     private bool isSwingingToolDown;
 
     private Camera mainCamera;
+    private bool playerToolUseDisabled = false;
 
     private ToolEffect toolEffect = ToolEffect.none;
     private Rigidbody2D rigidBody2D;
+    private WaitForSeconds useToolAnimationPause;
     #pragma warning disable 414
     private Direction playerDirection;
-#pragma warning restore 414
+    #pragma warning restore 414
 
     private List<CharacterAttribute> characterAttributeCustomizationList;
     [Tooltip("Should be populated in the prefab with the equipped item sprite renderer")]
@@ -74,6 +78,8 @@ public class Player : SingletonMonobehaviour<Player>
     private void Start()
     {
         gridCursor = FindObjectOfType<GridCursor>();
+        useToolAnimationPause = new WaitForSeconds(Settings.useToolAnimationPause);
+        afterUseToolAnimationPause = new WaitForSeconds(Settings.afterUseToolAnimationPause);
     }
 
     private void Update()
@@ -206,18 +212,32 @@ public class Player : SingletonMonobehaviour<Player>
 
     private void PlayerClickInput()
     {
-        if (Input.GetMouseButton(0))
+        if (!playerToolUseDisabled)
         {
-            if (gridCursor.CursorIsEnabled)
+            if (Input.GetMouseButton(0))
             {
-                ProcessPlayerClickInput();
+                if (gridCursor.CursorIsEnabled)
+                {
+                    //Get Cursor Grid Position
+                    Vector3Int cursorGridPosition = gridCursor.GetGridPositionForCursor();
+
+                    //Get Player Grid Position
+                    Vector3Int playerGridPosition = gridCursor.GetGridPositionForPlayer();
+
+                    ProcessPlayerClickInput(cursorGridPosition, playerGridPosition);
+                }
             }
         }
     }
 
-    private void ProcessPlayerClickInput()
+    private void ProcessPlayerClickInput(Vector3Int cursorGridPosition, Vector3Int playerGridPosition)
     {
         ResetMovement();
+
+        Vector3Int playerDirection = GetPlayerClickDirection(cursorGridPosition, playerGridPosition);
+
+        //Get Grid property details at cursor position (the GridCursor validation routine ensures that grid property details are not null
+        GridPropertyDetails gridPropertyDetails = GridPropertiesManager.Instance.GetGridPropertyDetails(cursorGridPosition.x, cursorGridPosition.y);
 
         //Get Selected item details
         ItemDetails itemDetails = InventoryManager.Instance.GetSelectedInventoryItemDetails(InventoryLocation.player);
@@ -240,6 +260,10 @@ public class Player : SingletonMonobehaviour<Player>
                     }
                     break;
 
+                case ItemType.Hoeing_tool:
+                    ProcessPlayerClickInputTool(gridPropertyDetails, itemDetails, playerDirection);
+                    break;
+
                 case ItemType.none:
                     break;
 
@@ -249,6 +273,26 @@ public class Player : SingletonMonobehaviour<Player>
                 default:
                     break;
             }
+        }
+    }
+
+    private Vector3Int GetPlayerClickDirection(Vector3Int cursorGridPosition, Vector3Int playerGridPosition)
+    {
+        if (cursorGridPosition.x > playerGridPosition.x)
+        {
+            return Vector3Int.right;
+        }
+        else if (cursorGridPosition.x < playerGridPosition.x)
+        {
+            return Vector3Int.left;
+        }
+        else if (cursorGridPosition.y > playerGridPosition.y)
+        {
+            return Vector3Int.up;
+        }
+        else
+        {
+            return Vector3Int.down;
         }
     }
 
@@ -266,6 +310,75 @@ public class Player : SingletonMonobehaviour<Player>
         {
             EventHandler.CallDropSelectedItemEvent();
         }
+    }
+
+    private void ProcessPlayerClickInputTool(GridPropertyDetails gridPropertyDetails, ItemDetails itemDetails, Vector3Int playerDirection)
+    {
+        //Switch on tool
+        switch (itemDetails.itemType)
+        {
+            case ItemType.Hoeing_tool:
+                if (gridCursor.CursorPositionIsValid)
+                {
+                    HueGroundAtCursor(gridPropertyDetails, playerDirection);
+                }
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    private void HueGroundAtCursor(GridPropertyDetails gridPropertyDetails, Vector3Int playerDirection)
+    {
+        //Trigger animation
+        StartCoroutine(HoeGroundAtCursorRoutine(playerDirection, gridPropertyDetails));
+    }
+
+    private IEnumerator HoeGroundAtCursorRoutine(Vector3Int playerDirection, GridPropertyDetails gridPropertyDetails)
+    {
+        PlayerInputIsDisabled = true;
+        playerToolUseDisabled = true;
+
+        //Set tool animation to hoe in override animation
+        toolCharacterAttribure.partVariantType = PartVariantType.hoe;
+        characterAttributeCustomizationList.Clear();
+        characterAttributeCustomizationList.Add(toolCharacterAttribure);
+        animationOverrides.ApplyCharacterCustomisationParameters(characterAttributeCustomizationList);
+        
+        if (playerDirection == Vector3Int.right)
+        {
+            isUsingToolRight = true;
+        }
+        else if (playerDirection == Vector3Int.left)
+        {
+            isUsingToolLeft = true;
+        }
+        else if (playerDirection == Vector3Int.up)
+        {
+            isUsingToolUp = true;
+        }
+        else if (playerDirection == Vector3Int.down)
+        {
+            isUsingToolDown = true;
+        }
+
+        yield return useToolAnimationPause;
+
+        //Set Grid property details for dug ground
+        if (gridPropertyDetails.daysSinceDug == -1)
+        {
+            gridPropertyDetails.daysSinceDug = 0;
+        }
+
+        //Set grid property to dug
+        GridPropertiesManager.Instance.SetGridPropertyDetails(gridPropertyDetails.gridX, gridPropertyDetails.gridY, gridPropertyDetails);
+
+        //After animation pause
+        yield return afterUseToolAnimationPause;
+
+        PlayerInputIsDisabled = false;
+        playerToolUseDisabled = false;
     }
 
     /// <summary>
