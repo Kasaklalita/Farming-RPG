@@ -133,6 +133,14 @@ public class GridCursor : MonoBehaviour
                     }
                     break;
 
+                case ItemType.Watering_tool:
+                    if (!IsCursorValidForTool(gridPropertyDetails, itemDetails))
+                    {
+                        SetCursorToInvalid();
+                        return;
+                    }
+                    break;
+
                 case ItemType.none:
                     break;
 
@@ -222,6 +230,16 @@ public class GridCursor : MonoBehaviour
                     {
                         return true;
                     }
+                }
+                else
+                {
+                    return false;
+                }
+
+            case ItemType.Watering_tool:
+                if (gridPropertyDetails.daysSinceDug > -1 && gridPropertyDetails.daysSinceWatered == -1)
+                {
+                    return true;
                 }
                 else
                 {
