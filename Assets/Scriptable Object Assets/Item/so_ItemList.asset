@@ -33,7 +33,7 @@ MonoBehaviour:
     itemLongDescription: A juicy, fat, ripe pumpkin. It makes great soup as well
       as a scary Halloween face!
     itemUseGridRadius: 2
-    itemUseRadius: 0
+    itemUseRadius: 2
     isStartingItem: 0
     canBePickedUp: 1
     canBeDropped: 1
