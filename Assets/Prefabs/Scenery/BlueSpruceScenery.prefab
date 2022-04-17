@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 5525978904645679561}
   - component: {fileID: 5285061534530659602}
   m_Layer: 0
-  m_Name: BlueSpruceScenary
+  m_Name: BlueSpruceScenery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
