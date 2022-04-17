@@ -546,7 +546,12 @@ public class Player : SingletonMonobehaviour<Player>
 
     public Vector3 GetPlayerViewportPosition()
     {
-        //Vector3 viewport position for player ((0,0) viewport bottom, (1,1) viewport top right
+        //Vector3 viewport position for player ((0,0) viewport bottom left, (1,1) viewport top right
         return mainCamera.WorldToViewportPoint(transform.position);
+    }
+
+    public Vector3 GetPlayerCentrePosition()
+    {
+        return new Vector3(transform.position.x, transform.position.y + Settings.playerCentreYOffset, transform.position.z);
     }
 }

@@ -11,6 +11,9 @@ public static class Settings
     public const float gridCellSize = 1f; //Grid cell size in unity units
     public static Vector2 cursorSize = Vector2.one;
 
+    //Player
+    public static float playerCentreYOffset = 0.875f;
+
     //Player Movement
     public const float runningSpeed = 5.333f;
     public const float walkingSpeed = 2.666f;
