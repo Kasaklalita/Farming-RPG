@@ -99,16 +99,17 @@ public static class HelperMethods
     /// <param name="size"></param>
     /// <param name="angle"></param>
     /// <returns></returns>
-    public static T[] GetComponentsAtBoxLocationNonAlloc<T> (int numbersOfCollidersToTest, Vector2 point, Vector2 size, float angle)
+    public static T[] GetComponentsAtBoxLocationNonAlloc<T>(int numberOfCollidersToTest, Vector2 point, Vector2 size, float angle)
     {
-        Collider2D[] collider2DArray = new Collider2D[numbersOfCollidersToTest];
+        Collider2D[] collider2DArray = new Collider2D[numberOfCollidersToTest];
+
         Physics2D.OverlapBoxNonAlloc(point, size, angle, collider2DArray);
 
         T tComponent = default(T);
 
         T[] componentArray = new T[collider2DArray.Length];
 
-        for (int i = collider2DArray.Length; i >= 0; i--)
+        for (int i = collider2DArray.Length - 1; i >= 0; i--)
         {
             if (collider2DArray[i] != null)
             {
@@ -120,6 +121,7 @@ public static class HelperMethods
                 }
             }
         }
+
         return componentArray;
     }
 }
