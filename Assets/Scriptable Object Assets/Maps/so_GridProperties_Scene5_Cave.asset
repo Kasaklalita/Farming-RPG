@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b979fa4d71c5543938a97ecab2100e, type: 3}
   m_Name: so_GridProperties_Scene5_Cave
   m_EditorClassIdentifier: 
-  sceneName: 0
+  sceneName: 4
   gridWidth: 50
   gridHeight: 50
   originX: -25

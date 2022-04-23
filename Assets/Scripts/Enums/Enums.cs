@@ -77,7 +77,9 @@ public enum SceneName
     Scene2_Field,
     Scene3_Cabin,
     Scene4_House,
-    Scene5_Cave
+    Scene5_Cave,
+    Scene6_Village,
+    Scene7_Village
 }
 
 public enum Season

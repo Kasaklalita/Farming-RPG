@@ -118,6 +118,16 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 2a6700e4157309649a1edb27b126da7c, type: 3}
   - {fileID: 21300000, guid: 89c46045b5f23d840b62099f6f1f6344, type: 3}
   - {fileID: 21300000, guid: 60f7a57556be87841a8cabc94054df28, type: 3}
+  - {fileID: -7614176681532881009, guid: 9194fc95e97de584fb022c439aca7c63, type: 3}
+  - {fileID: 1159864494577512369, guid: 9194fc95e97de584fb022c439aca7c63, type: 3}
+  - {fileID: 3953150516908535398, guid: 9194fc95e97de584fb022c439aca7c63, type: 3}
+  - {fileID: 4288597548307622778, guid: 9194fc95e97de584fb022c439aca7c63, type: 3}
+  - {fileID: -3856745889839956931, guid: 9194fc95e97de584fb022c439aca7c63, type: 3}
+  - {fileID: -6471740296077092191, guid: 9194fc95e97de584fb022c439aca7c63, type: 3}
+  - {fileID: 6587885812606998715, guid: 9194fc95e97de584fb022c439aca7c63, type: 3}
+  - {fileID: 1434306972497490741, guid: 9194fc95e97de584fb022c439aca7c63, type: 3}
+  - {fileID: -1025194746423752744, guid: 9194fc95e97de584fb022c439aca7c63, type: 3}
+  - {fileID: -645392250508915148, guid: 9194fc95e97de584fb022c439aca7c63, type: 3}
   - {fileID: 21300000, guid: 7700e9e59e6f58e4598ea8f2e5a84cc1, type: 3}
   - {fileID: 21300000, guid: 5eb84bf51d351da428f95a1296f6a397, type: 3}
   - {fileID: 21300000, guid: 32951a16a8b26b14da5149528112309e, type: 3}
@@ -970,6 +980,16 @@ SpriteAtlas:
   - InventoryPlayerGreyedOut
   - Transparent16x16
   - Table
+  - Fences_0
+  - Fences_1
+  - Fences_2
+  - Fences_3
+  - Fences_4
+  - Fences_5
+  - Fences_6
+  - Fences_7
+  - Fences_8
+  - Fences_9
   - Stone
   - PineCone
   - Stalagmite
