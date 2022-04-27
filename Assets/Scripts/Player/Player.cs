@@ -279,9 +279,7 @@ public class Player : SingletonMonobehaviour<Player>
                     }
                     break;
 
-                case ItemType.Watering_tool:
                 case ItemType.Hoeing_tool:
-                case ItemType.Reaping_tool:
                     ProcessPlayerClickInputTool(gridPropertyDetails, itemDetails, playerDirection);
                     break;
 

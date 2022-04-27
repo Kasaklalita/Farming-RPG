@@ -74,13 +74,12 @@ public enum GridBoolProperty
 public enum SceneName
 {
     Scene1_Farm,
-    Scene2_Field,
+    Scene2_Village,
     Scene3_Cabin,
     Scene4_House,
     Scene5_Cave,
     Scene6_Village,
-    Scene7_Village,
-    Scene8_VillageHouse1
+    Scene7_VillageHouse1
 }
 
 public enum Season
