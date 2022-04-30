@@ -268,7 +268,7 @@ public class Player : SingletonMonobehaviour<Player>
                 case ItemType.Seed:
                     if (Input.GetMouseButton(0))
                     {
-                        ProcessPlayerClickInputSeed(itemDetails);
+                        ProcessPlayerClickInputSeed(gridPropertyDetails, itemDetails);
                     }
                     break;
 
@@ -279,6 +279,8 @@ public class Player : SingletonMonobehaviour<Player>
                     }
                     break;
 
+                case ItemType.Reaping_tool:
+                case ItemType.Watering_tool:
                 case ItemType.Hoeing_tool:
                     ProcessPlayerClickInputTool(gridPropertyDetails, itemDetails, playerDirection);
                     break;
@@ -348,12 +350,30 @@ public class Player : SingletonMonobehaviour<Player>
         }
     }
 
-    private void ProcessPlayerClickInputSeed(ItemDetails itemDetails)
+    private void ProcessPlayerClickInputSeed(GridPropertyDetails gridPropertyDetails, ItemDetails itemDetails)
     {
+        if (itemDetails.canBeDropped && gridCursor.CursorPositionIsValid && gridPropertyDetails.daysSinceDug > -1 && gridPropertyDetails.seedItemCode == -1)
+        {
+            PlantSeedAtCursor(gridPropertyDetails, itemDetails);
+        }
+
         if (itemDetails.canBeDropped && gridCursor.CursorPositionIsValid)
         {
             EventHandler.CallDropSelectedItemEvent();
         }
+    }
+
+    private void PlantSeedAtCursor(GridPropertyDetails gridPropertyDetails, ItemDetails itemDetails)
+    {
+        //Update grid properties with seed details
+        gridPropertyDetails.seedItemCode = itemDetails.itemCode;
+        gridPropertyDetails.growthDays = 0;
+
+        //Display planted crop at grid property details
+        GridPropertiesManager.Instance.DisplayPlantedCrop(gridPropertyDetails);
+
+        //Remove item from inventory
+        EventHandler.CallRemoveSelectedItemFromInventoryEvent();
     }
 
     private void ProcessPlayerClickInputCommodity(ItemDetails itemDetails)

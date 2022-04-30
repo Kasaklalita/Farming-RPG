@@ -13,7 +13,7 @@ public class GridPropertiesManager : SingletonMonobehaviour<GridPropertiesManage
     private bool isFirstTimeSceneLoaded = true;
     private Grid grid;
     private Dictionary<string, GridPropertyDetails> gridPropertyDictionary;
-    //[SerializeField] private SO_CropDetailsList so_CropDetailsList = null;
+    [SerializeField] private SO_CropDetailsList so_CropDetailsList = null;
     [SerializeField] private SO_GridProperties[] so_gridPropertiesArray = null;
     [SerializeField] private Tile[] dugGround = null;
     [SerializeField] private Tile[] wateredGround = null;
@@ -66,6 +66,21 @@ public class GridPropertiesManager : SingletonMonobehaviour<GridPropertiesManage
     private void ClearDisplayGridPropertyDetails()
     {
         ClearDisplayGroundDecorations();
+
+        ClearDisplayAllPlantedCrops();
+    }
+
+    private void ClearDisplayAllPlantedCrops()
+    {
+        //Destroy all crops in scene
+
+        Crop[] cropArray;
+        cropArray = FindObjectsOfType<Crop>();
+
+        foreach (Crop crop in cropArray)
+        {
+            Destroy(crop.gameObject);
+        }
     }
 
     public void DisplayDugGround(GridPropertyDetails gridPropertyDetails)
@@ -373,59 +388,58 @@ public class GridPropertiesManager : SingletonMonobehaviour<GridPropertiesManage
 
             DisplayDugGround(gridPropertyDetails);
 
-            //DisplayWateredGround(gridPropertyDetails);
+            DisplayWateredGround(gridPropertyDetails);
 
-            //DisplayPlantedCrop(gridPropertyDetails);
+            DisplayPlantedCrop(gridPropertyDetails);
         }
     }
 
     /// <summary>
     /// Display planted crop for gridpropertyDetails
     /// </summary>
-    //public void DisplayPlantedCrop(GridPropertyDetails gridPropertyDetails)
-    //{
-    //    if (gridPropertyDetails.seedItemCode > -1)
-    //    {
-    //        // get crop details
-    //        //CropDetails cropDetails = so_CropDetailsList.GetCropDetails(gridPropertyDetails.seedItemCode);
+    public void DisplayPlantedCrop(GridPropertyDetails gridPropertyDetails)
+    {
+        if (gridPropertyDetails.seedItemCode > -1)
+        {
+            // get crop details
+            CropDetails cropDetails = so_CropDetailsList.GetCropDetails(gridPropertyDetails.seedItemCode);
 
-    //        if (cropDetails != null)
-    //        {
-    //            // prefab to use
-    //            GameObject cropPrefab;
+            if (cropDetails != null)
+            {
+                // prefab to use
+                GameObject cropPrefab;
 
-    //            // instantiate crop prefab at grid location
-    //            int growthStages = cropDetails.growthDays.Length;
+                // instantiate crop prefab at grid location
+                int growthStages = cropDetails.growthDays.Length;
+                int daysCounter = cropDetails.totalGrowthDays;
+                int currentGrowthStage = 0;
 
-    //            int currentGrowthStage = 0;
+                for (int i = growthStages - 1; i >= 0; i--)
+                {
+                    if (gridPropertyDetails.growthDays >= daysCounter)
+                    {
+                        currentGrowthStage = i;
+                        break;
+                    }
+                    daysCounter = daysCounter - cropDetails.growthDays[i];
+                }
 
-    //            for (int i = growthStages - 1; i >= 0; i--)
-    //            {
-    //                if (gridPropertyDetails.growthDays >= cropDetails.growthDays[i])
-    //                {
-    //                    currentGrowthStage = i;
-    //                    break;
-    //                }
+                cropPrefab = cropDetails.growthPrefab[currentGrowthStage];
 
-    //            }
+                Sprite growthSprite = cropDetails.growthSprite[currentGrowthStage];
 
-    //            cropPrefab = cropDetails.growthPrefab[currentGrowthStage];
+                Vector3 worldPosition = groundDecoration2.CellToWorld(new Vector3Int(gridPropertyDetails.gridX, gridPropertyDetails.gridY, 0));
 
-    //            Sprite growthSprite = cropDetails.growthSprite[currentGrowthStage];
+                worldPosition = new Vector3(worldPosition.x + Settings.gridCellSize / 2, worldPosition.y, worldPosition.z);
 
-    //            Vector3 worldPosition = groundDecoration2.CellToWorld(new Vector3Int(gridPropertyDetails.gridX, gridPropertyDetails.gridY, 0));
+                GameObject cropInstance = Instantiate(cropPrefab, worldPosition, Quaternion.identity);
 
-    //            worldPosition = new Vector3(worldPosition.x + Settings.gridCellSize / 2, worldPosition.y, worldPosition.z);
-
-    //            GameObject cropInstance = Instantiate(cropPrefab, worldPosition, Quaternion.identity);
-
-    //            cropInstance.GetComponentInChildren<SpriteRenderer>().sprite = growthSprite;
-    //            cropInstance.transform.SetParent(cropParentTransform);
-    //            //cropInstance.GetComponent<Crop>().cropGridPosition = new Vector2Int(gridPropertyDetails.gridX, gridPropertyDetails.gridY);
-    //        }
-    //    }
-    //}
-
+                cropInstance.GetComponentInChildren<SpriteRenderer>().sprite = growthSprite;
+                cropInstance.transform.SetParent(cropParentTransform);
+                cropInstance.GetComponent<Crop>().cropGridPosition = new Vector3Int(gridPropertyDetails.gridX, gridPropertyDetails.gridY, 0);
+            }
+        }
+    }
 
     /// <summary>
     /// This initialises the grid property dictionary with the values from the SO_GridProperties assets and stores the values for each scene in
@@ -505,16 +519,14 @@ public class GridPropertiesManager : SingletonMonobehaviour<GridPropertiesManage
     private void AfterSceneLoaded()
     {
 
-        //if (GameObject.FindGameObjectWithTag(Tags.CropsParentTransform) != null)
-        //{
-        //    cropParentTransform = GameObject.FindGameObjectWithTag(Tags.CropsParentTransform).transform;
-        //}
-        //else
-        //{
-        //    cropParentTransform = null;
-        //}
-
-
+        if (GameObject.FindGameObjectWithTag(Tags.CropsParentTransform) != null)
+        {
+            cropParentTransform = GameObject.FindGameObjectWithTag(Tags.CropsParentTransform).transform;
+        }
+        else
+        {
+            cropParentTransform = null;
+        }
 
         // Get Grid
         grid = GameObject.FindObjectOfType<Grid>();
