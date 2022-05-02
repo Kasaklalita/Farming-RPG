@@ -381,16 +381,19 @@ public class GridPropertiesManager : SingletonMonobehaviour<GridPropertiesManage
 
     private void DisplayGridPropertyDetails()
     {
-        // Loop through all grid items
-        foreach (KeyValuePair<string, GridPropertyDetails> item in gridPropertyDictionary)
+        if (gridPropertyDictionary != null)
         {
-            GridPropertyDetails gridPropertyDetails = item.Value;
+            // Loop through all grid items
+            foreach (KeyValuePair<string, GridPropertyDetails> item in gridPropertyDictionary)
+            {
+                GridPropertyDetails gridPropertyDetails = item.Value;
 
-            DisplayDugGround(gridPropertyDetails);
+                DisplayDugGround(gridPropertyDetails);
 
-            DisplayWateredGround(gridPropertyDetails);
+                DisplayWateredGround(gridPropertyDetails);
 
-            DisplayPlantedCrop(gridPropertyDetails);
+                DisplayPlantedCrop(gridPropertyDetails);
+            }
         }
     }
 
@@ -788,6 +791,6 @@ public class GridPropertiesManager : SingletonMonobehaviour<GridPropertiesManage
         }
 
         // Display grid property details to reflect changed values
-        //DisplayGridPropertyDetails();
+        DisplayGridPropertyDetails();
     }
 }
