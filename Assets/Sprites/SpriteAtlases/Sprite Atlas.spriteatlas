@@ -1777,6 +1777,17 @@ SpriteAtlas:
   - {fileID: -7746961489531447020, guid: afba78ae84664a941a55c31758ab5cf9, type: 3}
   - {fileID: -5900568562052052237, guid: afba78ae84664a941a55c31758ab5cf9, type: 3}
   - {fileID: 21300000, guid: 9d920dce45e2d1e48ad016a35985be7c, type: 3}
+  - {fileID: 283262918395532950, guid: 183613de44aa9384b827a48f1f0c3df9, type: 3}
+  - {fileID: -5017572320089744931, guid: 183613de44aa9384b827a48f1f0c3df9, type: 3}
+  - {fileID: 5520127769290878414, guid: 183613de44aa9384b827a48f1f0c3df9, type: 3}
+  - {fileID: -2071682391489600583, guid: 183613de44aa9384b827a48f1f0c3df9, type: 3}
+  - {fileID: -2427098341007487093, guid: 183613de44aa9384b827a48f1f0c3df9, type: 3}
+  - {fileID: -5342935890121459157, guid: 183613de44aa9384b827a48f1f0c3df9, type: 3}
+  - {fileID: -7073761113175812397, guid: 183613de44aa9384b827a48f1f0c3df9, type: 3}
+  - {fileID: -5091828049805951605, guid: 183613de44aa9384b827a48f1f0c3df9, type: 3}
+  - {fileID: -4209556597541047147, guid: 183613de44aa9384b827a48f1f0c3df9, type: 3}
+  - {fileID: 1887494081247492234, guid: 183613de44aa9384b827a48f1f0c3df9, type: 3}
+  - {fileID: 2007986136508003152, guid: 183613de44aa9384b827a48f1f0c3df9, type: 3}
   - {fileID: 21300000, guid: 592542ee58e4cba4598be85c3faf0ec7, type: 3}
   - {fileID: 21300000, guid: 6cefe32f730a75046ab8e8e5434d336e, type: 3}
   - {fileID: -8889897509666649805, guid: 400e208f8ff6631429ef6ca968c16ad2, type: 3}
@@ -3542,6 +3553,17 @@ SpriteAtlas:
   - Butch_16
   - Butch_15
   - Fence-3
+  - Rocks_18
+  - Rocks_14
+  - Rocks_16
+  - Rocks_20
+  - Rocks_6
+  - Rocks_4
+  - Rocks_5
+  - Rocks_2
+  - Rocks_3
+  - Rocks_0
+  - Rocks_1
   - Three Fourths 2 Collision Tile
   - WildOakScenary
   - Cora_8
