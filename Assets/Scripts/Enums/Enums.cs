@@ -77,6 +77,7 @@ public enum SceneName
     Scene2_Village,
     Scene3_VillageUp,
     Scene4_VillageRight,
+    Scene5_WolfCave,
     Scene5_Cave,
     Scene6_Village,
     Scene7_VillageHouse1
