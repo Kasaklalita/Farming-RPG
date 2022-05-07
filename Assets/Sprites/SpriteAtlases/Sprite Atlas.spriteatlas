@@ -881,6 +881,7 @@ SpriteAtlas:
   - {fileID: -2485526237100873097, guid: 0f48021b42b3b4342b1829669a8ec65d, type: 3}
   - {fileID: -8079878080289612398, guid: 0f48021b42b3b4342b1829669a8ec65d, type: 3}
   - {fileID: 21300000, guid: 622c962bd2dcb0d42abf3a4696d0bee9, type: 3}
+  - {fileID: 21300000, guid: 8bfccf3b0d893294a8ae7d1f52fc3d51, type: 3}
   - {fileID: 21300000, guid: c788044b013374d4989cfd07b26c6d60, type: 3}
   - {fileID: -2591857847239701004, guid: 3178799b764c8f14f821ba06edc51375, type: 3}
   - {fileID: 719774538432170253, guid: 3178799b764c8f14f821ba06edc51375, type: 3}
@@ -2645,6 +2646,7 @@ SpriteAtlas:
   - GroundTileset_108
   - GroundTileset_212
   - DialogueBox
+  - RedMansion
   - One Fourth 2 Collision Tile
   - Cora_Portrait_1
   - Cora_Portrait_0
