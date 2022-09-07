@@ -90,6 +90,8 @@ public enum SceneName
     House1,
     House2_1,
     House2_2,
+    House3_1,
+    House3_2,
     House5,
 }
 
