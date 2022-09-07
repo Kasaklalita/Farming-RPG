@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class ItemNudge : MonoBehaviour
@@ -15,7 +15,7 @@ public class ItemNudge : MonoBehaviour
     {
         if (isAnimating == false)
         {
-            if (gameObject.transform.position.x < collision.transform.position.x)
+            if (gameObject.transform.position.x < collision.gameObject.transform.position.x)
             {
                 StartCoroutine(RotateAntiClock());
             }
@@ -23,6 +23,14 @@ public class ItemNudge : MonoBehaviour
             {
                 StartCoroutine(RotateClock());
             }
+
+            //Play rustle sound if player
+            if (collision.gameObject.tag == "Player")
+            {
+                AudioManager.Instance.PlaySound(SoundName.effectRustle);
+            }
+
+
         }
     }
 
@@ -30,7 +38,7 @@ public class ItemNudge : MonoBehaviour
     {
         if (isAnimating == false)
         {
-            if (gameObject.transform.position.x > collision.transform.position.x)
+            if (gameObject.transform.position.x > collision.gameObject.transform.position.x)
             {
                 StartCoroutine(RotateAntiClock());
             }
@@ -38,92 +46,63 @@ public class ItemNudge : MonoBehaviour
             {
                 StartCoroutine(RotateClock());
             }
+
+            //Play rustle sound if player
+            if (collision.gameObject.tag == "Player")
+            {
+                AudioManager.Instance.PlaySound(SoundName.effectRustle);
+            }
+
         }
     }
 
     private IEnumerator RotateAntiClock()
     {
         isAnimating = true;
-        int childCount = gameObject.transform.childCount;
 
-        if (childCount > 0)
+        for (int i = 0; i < 4; i++)
         {
-            for (int i = 0; i < 4; i++)
-            {
-                gameObject.transform.GetChild(0).Rotate(0f, 0f, 2f);
-                yield return pause;
-            }
-
-            for (int i = 0; i < 5; i++)
-            {
-                gameObject.transform.GetChild(0).Rotate(0f, 0f, -2f);
-                yield return pause;
-            }
-
-            gameObject.transform.GetChild(0).Rotate(0f, 0f, 2f);
-            yield return pause;
-            isAnimating = false;
-        }
-        else
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                gameObject.transform.Rotate(0f, 0f, 2f);
-                yield return pause;
-            }
-
-            for (int i = 0; i < 5; i++)
-            {
-                gameObject.transform.Rotate(0f, 0f, -2f);
-                yield return pause;
-            }
-
             gameObject.transform.Rotate(0f, 0f, 2f);
+
             yield return pause;
-            isAnimating = false;
         }
+
+        for (int i = 0; i < 5; i++)
+        {
+            gameObject.transform.Rotate(0f, 0f, -2f);
+
+            yield return pause;
+        }
+
+        gameObject.transform.Rotate(0f, 0f, 2f);
+
+        yield return pause;
+
+        isAnimating = false;
     }
 
     private IEnumerator RotateClock()
     {
         isAnimating = true;
-        int childCount = gameObject.transform.childCount;
 
-        if (childCount > 0)
+        for (int i = 0; i < 4; i++)
         {
-            for (int i = 0; i < 4; i++)
-            {
-                gameObject.transform.GetChild(0).Rotate(0f, 0f, -2f);
-                yield return pause;
-            }
-
-            for (int i = 0; i < 5; i++)
-            {
-                gameObject.transform.GetChild(0).Rotate(0f, 0f, 2f);
-                yield return pause;
-            }
-
-            gameObject.transform.GetChild(0).Rotate(0f, 0f, -2f);
-            yield return pause;
-            isAnimating = false;
-        }
-        else
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                gameObject.transform.Rotate(0f, 0f, -2f);
-                yield return pause;
-            }
-
-            for (int i = 0; i < 5; i++)
-            {
-                gameObject.transform.Rotate(0f, 0f, 2f);
-                yield return pause;
-            }
-
             gameObject.transform.Rotate(0f, 0f, -2f);
+
             yield return pause;
-            isAnimating = false;
-        }   
+        }
+
+        for (int i = 0; i < 5; i++)
+        {
+            gameObject.transform.Rotate(0f, 0f, 2f);
+
+            yield return pause;
+        }
+
+        gameObject.transform.Rotate(0f, 0f, -2f);
+
+        yield return pause;
+
+        isAnimating = false;
     }
 }

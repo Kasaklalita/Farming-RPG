@@ -1,4 +1,4 @@
-public interface ISaveable
+﻿public interface ISaveable
 {
     string ISaveableUniqueID { get; set; }
 
@@ -8,7 +8,9 @@ public interface ISaveable
 
     void ISaveableDeregister();
 
-    //GameObjectSave ISaveableSave();
+    GameObjectSave ISaveableSave();
+
+    void ISaveableLoad(GameSave gameSave);
 
 
     void ISaveableStoreScene(string sceneName);

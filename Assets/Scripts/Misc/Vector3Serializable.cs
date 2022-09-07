@@ -1,6 +1,7 @@
-[System.Serializable]
+﻿[System.Serializable]
 public class Vector3Serializable
 {
+
     public float x, y, z;
 
     public Vector3Serializable(float x, float y, float z)
@@ -12,6 +13,6 @@ public class Vector3Serializable
 
     public Vector3Serializable()
     {
-
     }
+
 }

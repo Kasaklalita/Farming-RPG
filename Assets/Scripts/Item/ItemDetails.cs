@@ -1,8 +1,8 @@
+﻿
 using UnityEngine;
 
 [System.Serializable]
-
-public class ItemDetails
+public class ItemDetails 
 {
     public int itemCode;
     public ItemType itemType;
@@ -16,5 +16,4 @@ public class ItemDetails
     public bool canBeDropped;
     public bool canBeEaten;
     public bool canBeCarried;
-
 }

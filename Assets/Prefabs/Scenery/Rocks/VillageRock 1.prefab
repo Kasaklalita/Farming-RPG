@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6055006085710669682}
   - component: {fileID: 2191636293608009238}
   - component: {fileID: 8913494600955395686}
-  - component: {fileID: 8748807148542287848}
   m_Layer: 0
   m_Name: VillageRock 1
   m_TagString: Untagged
@@ -71,10 +70,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 72535611
+  m_SortingLayerID: 1564865277
   m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4979347232350119448, guid: dce2fd791241e54439893fd032ae9edd, type: 3}
+  m_Sprite: {fileID: 4979347232350119448, guid: dce2fd791241e54439893fd032ae9edd,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -137,15 +137,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7728007, y: 0.46839762}
   m_EdgeRadius: 0
---- !u!114 &8748807148542287848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3485811078164069322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ceff4057db369a4998410c12fecea49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

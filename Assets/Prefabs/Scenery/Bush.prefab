@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3478135057450897469}
   - component: {fileID: 3478135057450897464}
-  - component: {fileID: 2359687327713051734}
   - component: {fileID: 3478135057450897470}
   - component: {fileID: 4300703587998416627}
+  - component: {fileID: 6055601285609285564}
   m_Layer: 0
   m_Name: Bush
   m_TagString: Untagged
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 72535611
+  m_SortingLayerID: 1564865277
   m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9367faf32a7a76e4f9606e53c7c85b6d, type: 3}
@@ -85,18 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &2359687327713051734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3478135057450897468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ceff4057db369a4998410c12fecea49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &3478135057450897470
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -149,3 +137,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.97288513, y: 0.4616245}
   m_EdgeRadius: 0
+--- !u!114 &6055601285609285564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3478135057450897468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01fbb2ab9d7886c4c95abbee42d62eb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

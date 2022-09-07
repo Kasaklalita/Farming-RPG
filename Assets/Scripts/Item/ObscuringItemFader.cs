@@ -1,15 +1,14 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-
 public class ObscuringItemFader : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     public void FadeOut()
@@ -33,7 +32,6 @@ public class ObscuringItemFader : MonoBehaviour
             spriteRenderer.color = new Color(1f, 1f, 1f, currentAlpha);
             yield return null;
         }
-
         spriteRenderer.color = new Color(1f, 1f, 1f, 1f);
     }
 
@@ -42,9 +40,9 @@ public class ObscuringItemFader : MonoBehaviour
         float currentAlpha = spriteRenderer.color.a;
         float distance = currentAlpha - Settings.targetAlpha;
 
-        while (currentAlpha - Settings.targetAlpha > 0.01f)
+        while(currentAlpha - Settings.targetAlpha > 0.01f)
         {
-            currentAlpha -= distance / Settings.fadeOutSeconds * Time.deltaTime;
+            currentAlpha = currentAlpha - distance / Settings.fadeOutSeconds * Time.deltaTime;
             spriteRenderer.color = new Color(1f, 1f, 1f, currentAlpha);
             yield return null;
         }

@@ -1,5 +1,5 @@
+﻿using TMPro;
 using UnityEngine;
-using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -10,13 +10,11 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private Transform parentItem;
     private GridCursor gridCursor;
     private Cursor cursor;
-    private GameObject draggedItem;
+    public GameObject draggedItem;
 
     public Image inventorySlotHighlight;
     public Image inventorySlotImage;
-    //public TextMeshProUGUI textMeshProUGUI;
-    public Text text;
-
+    public TextMeshProUGUI textMeshProUGUI;
     [SerializeField] private UIInventoryBar inventoryBar = null;
     [SerializeField] private GameObject inventoryTextBoxPrefab = null;
     [HideInInspector] public bool isSelected = false;
@@ -30,18 +28,18 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         parentCanvas = GetComponentInParent<Canvas>();
     }
 
-    private void OnEnable()
-    {
-        EventHandler.AfterSceneLoadEvent += SceneLoaded;
-        EventHandler.DropSelectedItemEvent += DropSelectedItemAtMousePosition;
-        EventHandler.RemoveSelectedItemFromInventoryEvent += RemoveSelectedItemFromInventory;
-    }
-
     private void OnDisable()
     {
         EventHandler.AfterSceneLoadEvent -= SceneLoaded;
-        EventHandler.DropSelectedItemEvent -= DropSelectedItemAtMousePosition;
         EventHandler.RemoveSelectedItemFromInventoryEvent -= RemoveSelectedItemFromInventory;
+        EventHandler.DropSelectedItemEvent -= DropSelectedItemAtMousePosition;
+    }
+
+    private void OnEnable()
+    {
+        EventHandler.AfterSceneLoadEvent += SceneLoaded;
+        EventHandler.RemoveSelectedItemFromInventoryEvent += RemoveSelectedItemFromInventory;
+        EventHandler.DropSelectedItemEvent += DropSelectedItemAtMousePosition;
     }
 
     private void Start()
@@ -53,11 +51,11 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     private void ClearCursors()
     {
-        //Disable cursor
+        // Disable cursor
         gridCursor.DisableCursor();
         cursor.DisableCursor();
 
-        //Set item type to none
+        // Set item type to none
         gridCursor.SelectedItemType = ItemType.none;
         cursor.SelectedItemType = ItemType.none;
     }
@@ -67,20 +65,20 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     /// </summary>
     private void SetSelectedItem()
     {
-        //Clear currently highlighted items
+        // Clear currently highlighted items
         inventoryBar.ClearHighlightOnInventorySlots();
 
-        //Highlight item on inventory bar
+        // Highlight item on inventory bar
         isSelected = true;
 
-        //Set highlighted inventory slots
+        // Set highlighted inventory slots
         inventoryBar.SetHighlightedInventorySlots();
 
-        //Set use radius for cursors
+        // Set use radius for cursors
         gridCursor.ItemUseGridRadius = itemDetails.itemUseGridRadius;
         cursor.ItemUseRadius = itemDetails.itemUseRadius;
 
-        //If the item required a gridCursor then enable cursor
+        // If item requires a grid cursor then enable cursor
         if (itemDetails.itemUseGridRadius > 0)
         {
             gridCursor.EnableCursor();
@@ -90,7 +88,8 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             gridCursor.DisableCursor();
         }
 
-        if (itemDetails.itemUseRadius > 0)
+        // If item requires a cursor then enable cursor
+        if (itemDetails.itemUseRadius > 0f)
         {
             cursor.EnableCursor();
         }
@@ -99,68 +98,47 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             cursor.DisableCursor();
         }
 
-        //Set item type
+        // Set item type
         gridCursor.SelectedItemType = itemDetails.itemType;
         cursor.SelectedItemType = itemDetails.itemType;
 
-
+        // Set item selected in inventory
         InventoryManager.Instance.SetSelectedInventoryItem(InventoryLocation.player, itemDetails.itemCode);
 
         if (itemDetails.canBeCarried == true)
         {
-            Player.Instance.ShowCarriedItrem(itemDetails.itemCode);
+            // Show player carrying item
+            Player.Instance.ShowCarriedItem(itemDetails.itemCode);
         }
-        else
+        else // show player carrying nothing
         {
             Player.Instance.ClearCarriedItem();
         }
     }
 
-    private void ClearSelectedItem()
+    public void ClearSelectedItem()
     {
         ClearCursors();
 
-        //Clear currently highlighted items
+        // Clear currently highlighted items
         inventoryBar.ClearHighlightOnInventorySlots();
 
         isSelected = false;
 
-        //Set no item selected in inventory
+        // set no item selected in inventory
         InventoryManager.Instance.ClearSelectedInventoryItem(InventoryLocation.player);
 
+        // Clear player carrying item
         Player.Instance.ClearCarriedItem();
     }
 
     /// <summary>
-    /// Drops the item (if selected) at the current mouse position. Called by the DropItem event
+    /// Drops the item (if selected) at the current mouse position.  Called by the DropItem event.
     /// </summary>
     private void DropSelectedItemAtMousePosition()
     {
         if (itemDetails != null && isSelected)
         {
-            // Vector3 worldPosition = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -mainCamera.transform.position.z));
-            ////If can drop item here
-            //Vector3Int gridPosition = GridPropertiesManager.Instance.grid.WorldToCell(worldPosition);
-            //GridPropertyDetails gridPropertyDetails = GridPropertiesManager.Instance.GetGridPropertyDetails(gridPosition.x, gridPosition.y);
-
-            //if (gridPropertyDetails != null && gridPropertyDetails.canDropItem)
-            ////if (gridCursor.CursorPositionIsValid)
-            //{
-
-            //    //Create item from prefab at mouse position
-            //    GameObject itemGameObject = Instantiate(itemPrefab, new Vector3(worldPosition.x, worldPosition.y - Settings.gridCellSize / 2f, worldPosition.z), Quaternion.identity, parentItem);
-            //    Item item = itemGameObject.GetComponent<Item>();
-            //    item.ItemCode = itemDetails.itemCode;
-
-            //    //Remove item from player`s inventory
-            //    InventoryManager.Instance.RemoveItem(InventoryLocation.player, item.ItemCode);
-
-            //    //If no more of item then clear selected
-            //    if (InventoryManager.Instance.FindItemInInventory(InventoryLocation.player, item.ItemCode) == -1)
-            //    {
-            //        ClearSelectedItem();
-            //    }
-            //}
             // If  a valid cursor position
             if (gridCursor.CursorPositionIsValid)
             {
@@ -188,10 +166,10 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         {
             int itemCode = itemDetails.itemCode;
 
-            //Remove item from players inventory
+            // Remove item from players inventory
             InventoryManager.Instance.RemoveItem(InventoryLocation.player, itemCode);
 
-            //If no more of item then clear selected
+            // If no more of item then clear selected
             if (InventoryManager.Instance.FindItemInInventory(InventoryLocation.player, itemCode) == -1)
             {
                 ClearSelectedItem();
@@ -199,21 +177,18 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         }
     }
 
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (itemDetails != null)
         {
-            if (eventData.button == PointerEventData.InputButton.Left)
-            {
-                Debug.Log("[eq");
-            }
-            //Disable keyboard input
+            // Disable keyboard input
             Player.Instance.DisablePlayerInputAndResetMovement();
 
-            //Instantiate gameObject as dragged item
+            // Instatiate gameobject as dragged item
             draggedItem = Instantiate(inventoryBar.inventoryBarDraggedItem, inventoryBar.transform);
 
-            //Get image for dragged item
+            // Get image for dragged item
             Image draggedItemImage = draggedItem.GetComponentInChildren<Image>();
             draggedItemImage.sprite = inventorySlotImage.sprite;
 
@@ -223,37 +198,36 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnDrag(PointerEventData eventData)
     {
-        //Move game object as dragged item
+        // move game object as dragged item
         if (draggedItem != null)
         {
-            //draggedItem.transform.position = Input.mousePosition;
-            draggedItem.transform.position = new Vector3(Input.mousePosition.x - 40f, Input.mousePosition.y - 40f, Input.mousePosition.z);
+            draggedItem.transform.position = Input.mousePosition;
         }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        //Destroy game object as dragged item
+        // Destroy game object as dragged item
         if (draggedItem != null)
         {
             Destroy(draggedItem);
 
-            //If drag ends overinventory bar, get item drag is over and swap them
+            // If drag ends over inventory bar, get item drag is over and swap them
             if (eventData.pointerCurrentRaycast.gameObject != null && eventData.pointerCurrentRaycast.gameObject.GetComponent<UIInventorySlot>() != null)
             {
-                //Get the slot number where the drag ended
+                // get the slot number where the drag ended
                 int toSlotNumber = eventData.pointerCurrentRaycast.gameObject.GetComponent<UIInventorySlot>().slotNumber;
 
-                //Swap inventory items in inventory list
+                // Swap inventory items in inventory list
                 InventoryManager.Instance.SwapInventoryItems(InventoryLocation.player, slotNumber, toSlotNumber);
 
-                //Destroy inventory text box
+                // Destroy inventory text box
                 DestroyInventoryTextBox();
 
-                //Clear selected item
+                // Clear selected item
                 ClearSelectedItem();
             }
-            //Else attempt to drom the item if it can be dropped
+            // else attempt to drop the item if it can be dropped
             else
             {
                 if (itemDetails.canBeDropped)
@@ -261,16 +235,18 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                     DropSelectedItemAtMousePosition();
                 }
             }
+
+            // Enable player input
             Player.Instance.EnablePlayerInput();
         }
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        //if left click
+        // if left click
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            //If inventory slot currently selected, then deselect
+            // if inventory slot currently selected then deselect
             if (isSelected == true)
             {
                 ClearSelectedItem();
@@ -287,23 +263,24 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        //Populate text box with item details
+        // Populate text box with item details
         if (itemQuantity != 0)
         {
-            //Instantiate inventory text box
+            // Instantiate inventory text box
             inventoryBar.inventoryTextBoxGameobject = Instantiate(inventoryTextBoxPrefab, transform.position, Quaternion.identity);
             inventoryBar.inventoryTextBoxGameobject.transform.SetParent(parentCanvas.transform, false);
 
             UIInventoryTextBox inventoryTextBox = inventoryBar.inventoryTextBoxGameobject.GetComponent<UIInventoryTextBox>();
 
-            //Set item type description
+            // Set item type description
             string itemTypeDescription = InventoryManager.Instance.GetItemTypeDescription(itemDetails.itemType);
 
-            //Populate text box
+            // Populate text box
             inventoryTextBox.SetTextboxText(itemDetails.itemDescription, itemTypeDescription, "", itemDetails.itemLongDescription, "", "");
 
-            //Set text box position according to inventory bar position
+            // Set text box position according to inventory bar position
             if (inventoryBar.IsInventoryBarPositionBottom)
+
             {
                 inventoryBar.inventoryTextBoxGameobject.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0f);
                 inventoryBar.inventoryTextBoxGameobject.transform.position = new Vector3(transform.position.x, transform.position.y + 50f, transform.position.z);

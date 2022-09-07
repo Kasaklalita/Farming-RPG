@@ -1,4 +1,4 @@
-public enum AnimationName
+﻿public enum AnimationName
 {
     idleDown,
     idleUp,
@@ -44,7 +44,6 @@ public enum CharacterPartAnimator
     hat,
     count
 }
-
 public enum PartVariantColour
 {
     none,
@@ -57,11 +56,11 @@ public enum PartVariantType
     carry,
     hoe,
     pickaxe,
+    axe,
     scythe,
     wateringCan,
     count
 }
-
 public enum GridBoolProperty
 {
     diggable,
@@ -71,28 +70,6 @@ public enum GridBoolProperty
     isNPCObstacle
 }
 
-public enum SceneName
-{
-    Scene1_Farm,
-    Scene2_Village,
-    Scene3_VillageUp,
-    Scene4_VillageRight,
-    Scene5_WolfCave,
-    Scene6_Coast,
-    Scene7_CoastalCave,
-    //Scene5_Cave,
-    //Scene6_Village,
-    Scene7_VillageHouse1
-}
-
-public enum Season
-{
-    Spring,
-    Summer,
-    Autumn,
-    Winter,
-    count
-}
 
 public enum InventoryLocation
 {
@@ -101,13 +78,36 @@ public enum InventoryLocation
     count
 }
 
+public enum SceneName
+{
+    Scene1_Farm,
+    Scene2_Field,
+    Scene3_Cabin,
+    Scene_Village,
+    Scene_VillageRight,
+    Scene_CoastalCave
+}
+
+public enum Season
+{
+    Spring,
+    Summer,
+    Autumn,
+    Winter,
+    none,
+    count
+}
+
+
 public enum ToolEffect
 {
     none,
     watering
 }
 
-public enum HarvestActionEffect {
+
+public enum HarvestActionEffect
+{
     deciduousLeavesFalling,
     pineConesFalling,
     choppingTreeTrunk,
@@ -115,6 +115,16 @@ public enum HarvestActionEffect {
     reaping,
     none
 }
+
+public enum Weather
+{
+    dry,
+    raining,
+    snowing,
+    none,
+    count
+}
+
 
 public enum Direction
 {
@@ -124,6 +134,35 @@ public enum Direction
     right,
     none
 }
+
+public enum SoundName
+{
+    none = 0,
+    effectFootstepSoftGround = 10,
+    effectFootstepHardGround = 20,
+    effectAxe = 30,
+    effectPickaxe = 40,
+    effectScythe = 50,
+    effectHoe = 60,
+    effectWateringCan = 70,
+    effectBasket = 80,
+    effectPickupSound = 90,
+    effectRustle = 100,
+    effectTreeFalling = 110,
+    effectPlantingSound = 120,
+    effectPluck = 130,
+    effectStoneShatter = 140,
+    effectWoodSplinters = 150,
+    ambientCountryside1 = 1000,
+    ambientCountryside2 = 1010,
+    ambientIndoors1 = 1020,
+    ambientAdventuring1 = 1030,
+    ambientAdventuring2 = 1040,
+    ambientDungeon = 1050,
+    musicCalm3 = 2000,
+    musicCalm1 = 2010
+}
+
 
 public enum ItemType
 {
@@ -139,4 +178,12 @@ public enum ItemType
     Furniture,
     none,
     count
+}
+
+public enum Facing
+{
+    none,
+    front,
+    back,
+    right
 }

@@ -1,4 +1,4 @@
-[System.Serializable]
+﻿[System.Serializable]
 public class GridPropertyDetails
 {
     public int gridX;
@@ -16,6 +16,5 @@ public class GridPropertyDetails
 
     public GridPropertyDetails()
     {
-
     }
 }

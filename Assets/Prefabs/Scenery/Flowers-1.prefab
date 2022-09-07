@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3478135057450897469}
   - component: {fileID: 3478135057450897464}
   - component: {fileID: 3478135057450897470}
-  - component: {fileID: 3478135057450897471}
+  - component: {fileID: -6468389199753122840}
   m_Layer: 0
   m_Name: Flowers-1
   m_TagString: Untagged
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 72535611
+  m_SortingLayerID: 1564865277
   m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c6ac5c5d9d41d5b45b3b5823c175506e, type: 3}
@@ -110,7 +110,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.94898915, y: 0.8343991}
   m_EdgeRadius: 0
---- !u!114 &3478135057450897471
+--- !u!114 &-6468389199753122840
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,6 +119,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 3478135057450897468}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fb7044a4428f7f40a39b78848bf470b, type: 3}
+  m_Script: {fileID: 11500000, guid: c42fd80bf3dd34c4e95a144ab9c21e21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

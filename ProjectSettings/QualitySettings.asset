@@ -26,7 +26,7 @@ QualitySettings:
     softVegetation: 0
     realtimeReflectionProbes: 0
     billboardsFaceCameraPosition: 0
-    vSyncCount: 0
+    vSyncCount: 1
     lodBias: 0.4
     maximumLODLevel: 0
     streamingMipmapsActive: 0
@@ -44,12 +44,16 @@ QualitySettings:
     excludedTargetPlatforms: []
   m_PerPlatformDefaultQuality:
     Android: 0
-    Lumin: 0
+    Nintendo 3DS: 0
     Nintendo Switch: 0
     PS4: 0
+    PSM: 0
+    PSP2: 0
     Stadia: 0
     Standalone: 0
+    Tizen: 0
     WebGL: 0
+    WiiU: 0
     Windows Store Apps: 0
     XboxOne: 0
     iPhone: 0

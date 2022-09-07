@@ -1,5 +1,4 @@
-[System.Serializable]
-
+﻿[System.Serializable]
 public struct InventoryItem
 {
     public int itemCode;

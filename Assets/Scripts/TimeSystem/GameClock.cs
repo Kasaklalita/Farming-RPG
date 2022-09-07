@@ -1,5 +1,6 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
+
 
 public class GameClock : MonoBehaviour
 {
@@ -8,19 +9,20 @@ public class GameClock : MonoBehaviour
     [SerializeField] private TextMeshProUGUI seasonText = null;
     [SerializeField] private TextMeshProUGUI yearText = null;
 
+
     private void OnEnable()
     {
         EventHandler.AdvanceGameMinuteEvent += UpdateGameTime;
     }
 
-    private void onDisable()
+    private void OnDisable()
     {
         EventHandler.AdvanceGameMinuteEvent -= UpdateGameTime;
     }
 
     private void UpdateGameTime(int gameYear, Season gameSeason, int gameDay, string gameDayOfWeek, int gameHour, int gameMinute, int gameSecond)
     {
-        //Update time
+        // Update time
 
         gameMinute = gameMinute - (gameMinute % 10);
 
@@ -29,11 +31,11 @@ public class GameClock : MonoBehaviour
 
         if (gameHour >= 12)
         {
-            ampm = "mp";
+            ampm = " pm";
         }
         else
         {
-            ampm = "am";
+            ampm = " am";
         }
 
         if (gameHour >= 13)
@@ -52,9 +54,11 @@ public class GameClock : MonoBehaviour
 
         string time = gameHour.ToString() + " : " + minute + ampm;
 
+
         timeText.SetText(time);
         dateText.SetText(gameDayOfWeek + ". " + gameDay.ToString());
         seasonText.SetText(gameSeason.ToString());
         yearText.SetText("Year " + gameYear);
     }
+
 }

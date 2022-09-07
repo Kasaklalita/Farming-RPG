@@ -1,5 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class AnimationOverrides : MonoBehaviour
@@ -12,7 +12,7 @@ public class AnimationOverrides : MonoBehaviour
 
     private void Start()
     {
-        //Initialise animation type dicrionary keyed by animation clip
+        // Initialise animation type dictionary keyed by animation clip
         animationTypeDictionaryByAnimation = new Dictionary<AnimationClip, SO_AnimationType>();
 
         foreach (SO_AnimationType item in soAnimationTypeArray)
@@ -20,7 +20,7 @@ public class AnimationOverrides : MonoBehaviour
             animationTypeDictionaryByAnimation.Add(item.animationClip, item);
         }
 
-        //Initialise animation type dicrionary keyed by string
+        // Initialise animation type dictionary keyed by string
         animationTypeDictionaryByCompositeAttributeKey = new Dictionary<string, SO_AnimationType>();
 
         foreach (SO_AnimationType item in soAnimationTypeArray)
@@ -28,13 +28,15 @@ public class AnimationOverrides : MonoBehaviour
             string key = item.characterPart.ToString() + item.partVariantColour.ToString() + item.partVariantType.ToString() + item.animationName.ToString();
             animationTypeDictionaryByCompositeAttributeKey.Add(key, item);
         }
+
     }
+
 
     public void ApplyCharacterCustomisationParameters(List<CharacterAttribute> characterAttributesList)
     {
         //Stopwatch s1 = Stopwatch.StartNew();
 
-        //Loop through all character attributes and set the animation override controller for each
+        // Loop through all character attributes and set the animation override controller for each
         foreach (CharacterAttribute characterAttribute in characterAttributesList)
         {
             Animator currentAnimator = null;
@@ -42,7 +44,7 @@ public class AnimationOverrides : MonoBehaviour
 
             string animatorSOAssetName = characterAttribute.characterPart.ToString();
 
-            //Find animators in scene that match scriptable object animator type
+            // Find animators in scene that match scriptable object animator type
             Animator[] animatorsArray = character.GetComponentsInChildren<Animator>();
 
             foreach (Animator animator in animatorsArray)
@@ -54,13 +56,13 @@ public class AnimationOverrides : MonoBehaviour
                 }
             }
 
-            //Get base current animations for animator
+            // Get base current animations for animator
             AnimatorOverrideController aoc = new AnimatorOverrideController(currentAnimator.runtimeAnimatorController);
             List<AnimationClip> animationsList = new List<AnimationClip>(aoc.animationClips);
 
             foreach (AnimationClip animationClip in animationsList)
             {
-                //Find animation in dictionary
+                // find animation in dictionary
                 SO_AnimationType so_AnimationType;
                 bool foundAnimation = animationTypeDictionaryByAnimation.TryGetValue(animationClip, out so_AnimationType);
 
@@ -71,7 +73,7 @@ public class AnimationOverrides : MonoBehaviour
                     SO_AnimationType swapSO_AnimationType;
                     bool foundSwapAnimation = animationTypeDictionaryByCompositeAttributeKey.TryGetValue(key, out swapSO_AnimationType);
 
-                    if (foundAnimation)
+                    if (foundSwapAnimation)
                     {
                         AnimationClip swapAnimationClip = swapSO_AnimationType.animationClip;
 
@@ -80,12 +82,13 @@ public class AnimationOverrides : MonoBehaviour
                 }
             }
 
-            //Apply animation updates to animation override controller and then update animator with the new controller
+            // Apply animation updates to animation override controller and then update animator with the new controller
             aoc.ApplyOverrides(animsKeyValuePairList);
             currentAnimator.runtimeAnimatorController = aoc;
         }
 
-        //s1.Stop();
-        //Unity.Engine.Debug.Log("Time to apply character customisation: " + s1.Elapsed + " elapsed seconds");
+        // s1.Stop();
+        // UnityEngine.Debug.Log("Time to apply character customisation : " + s1.Elapsed + "   elapsed seconds");
     }
+
 }

@@ -1,4 +1,4 @@
-
+﻿
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -50,7 +50,7 @@ public class ItemCodeDescriptionDrawer : PropertyDrawer
     {
         SO_ItemList so_itemList;
 
-        so_itemList = AssetDatabase.LoadAssetAtPath("Assets/Scriptable Object Assets/Item/so_ItemList.asset", typeof(SO_ItemList)) as SO_ItemList;
+        so_itemList = AssetDatabase.LoadAssetAtPath("Assets/Scriptable Object Assets/Item/so_ItemList.asset",typeof(SO_ItemList)) as SO_ItemList;
 
         List<ItemDetails> itemDetailsList = so_itemList.itemDetails;
 

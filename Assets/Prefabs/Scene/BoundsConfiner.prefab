@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3795707246259470734
+--- !u!1 &4214554044092655580
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7030596186160265643}
-  - component: {fileID: 1675523112336385139}
+  - component: {fileID: 217840187793509082}
+  - component: {fileID: 8162683776443391638}
   m_Layer: 2
   m_Name: BoundsConfiner
   m_TagString: BoundsConfiner
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7030596186160265643
+--- !u!4 &217840187793509082
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3795707246259470734}
+  m_GameObject: {fileID: 4214554044092655580}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,13 +31,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &1675523112336385139
+--- !u!60 &8162683776443391638
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3795707246259470734}
+  m_GameObject: {fileID: 4214554044092655580}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -56,7 +56,7 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -39.950806, y: 30.957197}
-      - {x: -39.9714, y: -29.976469}
-      - {x: 40.973522, y: -29.970919}
-      - {x: 40.980694, y: 30.984877}
+    - - {x: -39.899418, y: 30.906046}
+      - {x: -39.91971, y: -29.943546}
+      - {x: 40.93269, y: -29.947523}
+      - {x: 40.942486, y: 30.923098}

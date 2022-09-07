@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -56,23 +56,13 @@ public class GridPropertiesManager : SingletonMonobehaviour<GridPropertiesManage
     private void ClearDisplayGroundDecorations()
     {
         // Remove ground decorations
-        if (groundDecoration1 != null)
-            groundDecoration1.ClearAllTiles();
-
-        if (groundDecoration2 != null)
-            groundDecoration2.ClearAllTiles();
-    }
-
-    private void ClearDisplayGridPropertyDetails()
-    {
-        ClearDisplayGroundDecorations();
-
-        ClearDisplayAllPlantedCrops();
+        groundDecoration1.ClearAllTiles();
+        groundDecoration2.ClearAllTiles();
     }
 
     private void ClearDisplayAllPlantedCrops()
     {
-        //Destroy all crops in scene
+        // Destroy all crops in scene
 
         Crop[] cropArray;
         cropArray = FindObjectsOfType<Crop>();
@@ -81,6 +71,13 @@ public class GridPropertiesManager : SingletonMonobehaviour<GridPropertiesManage
         {
             Destroy(crop.gameObject);
         }
+    }
+
+    private void ClearDisplayGridPropertyDetails()
+    {
+        ClearDisplayGroundDecorations();
+
+        ClearDisplayAllPlantedCrops();
     }
 
     public void DisplayDugGround(GridPropertyDetails gridPropertyDetails)
@@ -381,19 +378,16 @@ public class GridPropertiesManager : SingletonMonobehaviour<GridPropertiesManage
 
     private void DisplayGridPropertyDetails()
     {
-        if (gridPropertyDictionary != null)
+        // Loop through all grid items
+        foreach (KeyValuePair<string, GridPropertyDetails> item in gridPropertyDictionary)
         {
-            // Loop through all grid items
-            foreach (KeyValuePair<string, GridPropertyDetails> item in gridPropertyDictionary)
-            {
-                GridPropertyDetails gridPropertyDetails = item.Value;
+            GridPropertyDetails gridPropertyDetails = item.Value;
 
-                DisplayDugGround(gridPropertyDetails);
+            DisplayDugGround(gridPropertyDetails);
 
-                DisplayWateredGround(gridPropertyDetails);
+            DisplayWateredGround(gridPropertyDetails);
 
-                DisplayPlantedCrop(gridPropertyDetails);
-            }
+            DisplayPlantedCrop(gridPropertyDetails);
         }
     }
 
@@ -414,17 +408,17 @@ public class GridPropertiesManager : SingletonMonobehaviour<GridPropertiesManage
 
                 // instantiate crop prefab at grid location
                 int growthStages = cropDetails.growthDays.Length;
-                int daysCounter = cropDetails.totalGrowthDays;
-                int currentGrowthStage = 0;
 
+                int currentGrowthStage = 0;
+              
                 for (int i = growthStages - 1; i >= 0; i--)
                 {
-                    if (gridPropertyDetails.growthDays >= daysCounter)
+                    if (gridPropertyDetails.growthDays >= cropDetails.growthDays[i])
                     {
                         currentGrowthStage = i;
                         break;
                     }
-                    daysCounter = daysCounter - cropDetails.growthDays[i];
+
                 }
 
                 cropPrefab = cropDetails.growthPrefab[currentGrowthStage];
@@ -443,6 +437,7 @@ public class GridPropertiesManager : SingletonMonobehaviour<GridPropertiesManage
             }
         }
     }
+
 
     /// <summary>
     /// This initialises the grid property dictionary with the values from the SO_GridProperties assets and stores the values for each scene in
@@ -531,6 +526,8 @@ public class GridPropertiesManager : SingletonMonobehaviour<GridPropertiesManage
             cropParentTransform = null;
         }
 
+
+
         // Get Grid
         grid = GameObject.FindObjectOfType<Grid>();
 
@@ -563,16 +560,14 @@ public class GridPropertiesManager : SingletonMonobehaviour<GridPropertiesManage
     }
 
     /// <summary>
-    /// Returns the Crop object at the gridX, gridY position or null if no crop was found
+    ///  Returns the Crop object at the gridX, gridY position or null if no crop was found
     /// </summary>
-    /// <param name="gridPropertyDetails"></param>
-    /// <returns></returns>
     public Crop GetCropObjectAtGridLocation(GridPropertyDetails gridPropertyDetails)
     {
         Vector3 worldPosition = grid.GetCellCenterWorld(new Vector3Int(gridPropertyDetails.gridX, gridPropertyDetails.gridY, 0));
         Collider2D[] collider2DArray = Physics2D.OverlapPointAll(worldPosition);
 
-        //Loop through colliders to get crop game object
+        // Loop through colliders to get crop game object
         Crop crop = null;
 
         for (int i = 0; i < collider2DArray.Length; i++)
@@ -584,6 +579,7 @@ public class GridPropertiesManager : SingletonMonobehaviour<GridPropertiesManage
             if (crop != null && crop.cropGridPosition == new Vector2Int(gridPropertyDetails.gridX, gridPropertyDetails.gridY))
                 break;
         }
+
         return crop;
     }
 
@@ -594,6 +590,8 @@ public class GridPropertiesManager : SingletonMonobehaviour<GridPropertiesManage
     {
         return so_CropDetailsList.GetCropDetails(seedItemCode);
     }
+
+
 
     /// <summary>
     /// Get the grid property details for the tile at (gridX,gridY).  If no grid property details exist null is returned and can assume that all grid property details values are null or false
@@ -637,16 +635,16 @@ public class GridPropertiesManager : SingletonMonobehaviour<GridPropertiesManage
         SaveLoadManager.Instance.iSaveableObjectList.Remove(this);
     }
 
-    //public void ISaveableLoad(GameSave gameSave)
-    //{
-    //    if (gameSave.gameObjectData.TryGetValue(ISaveableUniqueID, out GameObjectSave gameObjectSave))
-    //    {
-    //        GameObjectSave = gameObjectSave;
+        public void ISaveableLoad(GameSave gameSave)
+    {
+        if (gameSave.gameObjectData.TryGetValue(ISaveableUniqueID, out GameObjectSave gameObjectSave))
+        {
+            GameObjectSave = gameObjectSave;
 
-    //        // Restore data for current scene
-    //        ISaveableRestoreScene(SceneManager.GetActiveScene().name);
-    //    }
-    //}
+            // Restore data for current scene
+            ISaveableRestoreScene(SceneManager.GetActiveScene().name);
+        }
+    }
 
 
     public void ISaveableRegister()
@@ -666,14 +664,14 @@ public class GridPropertiesManager : SingletonMonobehaviour<GridPropertiesManage
             }
 
             // get dictionary of bools - it exists since we created it in initialise
-            //if (sceneSave.boolDictionary != null && sceneSave.boolDictionary.TryGetValue("isFirstTimeSceneLoaded", out bool storedIsFirstTimeSceneLoaded))
-            //{
-            //    isFirstTimeSceneLoaded = storedIsFirstTimeSceneLoaded;
-            //}
+            if (sceneSave.boolDictionary != null && sceneSave.boolDictionary.TryGetValue("isFirstTimeSceneLoaded", out bool storedIsFirstTimeSceneLoaded))
+            {
+                isFirstTimeSceneLoaded = storedIsFirstTimeSceneLoaded;
+            }
 
-            //// Instantiate any crop prefabs initially present in the scene
-            //if (isFirstTimeSceneLoaded)
-            //    EventHandler.CallInstantiateCropPrefabsEvent();
+            // Instantiate any crop prefabs initially present in the scene
+            if (isFirstTimeSceneLoaded)
+                EventHandler.CallInstantiateCropPrefabsEvent();
 
 
             // If grid properties exist
@@ -687,10 +685,10 @@ public class GridPropertiesManager : SingletonMonobehaviour<GridPropertiesManage
             }
 
             // Update first time scene loaded bool
-            //if (isFirstTimeSceneLoaded == true)
-            //{
-            //    isFirstTimeSceneLoaded = false;
-            //}
+            if (isFirstTimeSceneLoaded == true)
+            {
+                isFirstTimeSceneLoaded = false;
+            }
 
 
         }

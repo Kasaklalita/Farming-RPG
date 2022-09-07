@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -249,9 +249,9 @@ public class GridCursor : MonoBehaviour
                     return false;
                 }
 
-            //case ItemType.Chopping_tool:
+            case ItemType.Chopping_tool:
             case ItemType.Collecting_tool:
-            //case ItemType.Breaking_tool:
+            case ItemType.Breaking_tool:
 
                 // Check if item can be harvested with item selected, check item is fully grown
 
@@ -265,7 +265,7 @@ public class GridCursor : MonoBehaviour
                     if (cropDetails != null)
                     {
                         // Check if crop fully grown
-                        if (gridPropertyDetails.growthDays >= cropDetails.totalGrowthDays)
+                        if (gridPropertyDetails.growthDays >= cropDetails.growthDays[cropDetails.growthDays.Length - 1])
                         {
                             // Check if crop can be harvested with tool selected
                             if (cropDetails.CanUseToolToHarvestCrop(itemDetails.itemCode))

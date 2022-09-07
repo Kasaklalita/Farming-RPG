@@ -1,17 +1,18 @@
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 [ExecuteAlways]
 public class TilemapGridProperties : MonoBehaviour
 {
+#if UNITY_EDITOR
     private Tilemap tilemap;
     [SerializeField] private SO_GridProperties gridProperties = null;
     [SerializeField] private GridBoolProperty gridBoolProperty = GridBoolProperty.diggable;
 
     private void OnEnable()
     {
-        //Only populate in the editor
+        // Only populate in the editor
         if (!Application.IsPlaying(gameObject))
         {
             tilemap = GetComponent<Tilemap>();
@@ -24,15 +25,14 @@ public class TilemapGridProperties : MonoBehaviour
     }
 
     private void OnDisable()
-    {
-        //Only populate in the editor
+    {        // Only populate in the editor
         if (!Application.IsPlaying(gameObject))
         {
             UpdateGridProperties();
 
             if (gridProperties != null)
             {
-                //This is required to ensure that the updated gripProperties gameObject gets saved when the game is saved - otherwise they are not saved
+                // This is required to ensure that the updated gridproperties gameobject gets saved when the game is saved - otherwise they are not saved.
                 EditorUtility.SetDirty(gridProperties);
             }
         }
@@ -40,10 +40,10 @@ public class TilemapGridProperties : MonoBehaviour
 
     private void UpdateGridProperties()
     {
-        //Compress tilemap bounds
+        // Compress timemap bounds
         tilemap.CompressBounds();
 
-        //Only populate in the editor
+        // Only populate in the editor
         if (!Application.IsPlaying(gameObject))
         {
             if (gridProperties != null)
@@ -68,11 +68,11 @@ public class TilemapGridProperties : MonoBehaviour
     }
 
     private void Update()
-    {
-        //Only populate in the editor
+    {        // Only populate in the editor
         if (!Application.IsPlaying(gameObject))
         {
-            Debug.Log("Disable property tilemaps");
+            Debug.Log("DISABLE PROPERTY TILEMAPS");
         }
     }
+#endif
 }

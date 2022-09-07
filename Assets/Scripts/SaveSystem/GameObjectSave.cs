@@ -1,9 +1,9 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 [System.Serializable]
 public class GameObjectSave
 {
-    //String key = scene name
+    // string key = scene name
     public Dictionary<string, SceneSave> sceneData;
 
     public GameObjectSave()

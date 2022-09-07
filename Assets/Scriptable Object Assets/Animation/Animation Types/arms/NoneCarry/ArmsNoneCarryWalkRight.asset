@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6cce969933053543b3bd20106d99ad2, type: 3}
+  m_Script: {fileID: 11500000, guid: b6d6e423cef15d64caf8e7690b5271b9, type: 3}
   m_Name: ArmsNoneCarryWalkRight
   m_EditorClassIdentifier: 
   animationClip: {fileID: 7400000, guid: 6c2464c80df04bf4083c3eaadab67c99, type: 2}

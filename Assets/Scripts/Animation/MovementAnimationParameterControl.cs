@@ -1,10 +1,12 @@
+﻿
 using UnityEngine;
 
 public class MovementAnimationParameterControl : MonoBehaviour
 {
     private Animator animator;
 
-    //Use this for initialisation
+    // Use this for initialisation
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -20,14 +22,7 @@ public class MovementAnimationParameterControl : MonoBehaviour
         EventHandler.MovementEvent -= SetAnimationParameters;
     }
 
-    private void SetAnimationParameters(
-        float xInput,
-        float yInput,
-        bool isWalking,
-        bool isRunning,
-        bool isIdle,
-        bool isCarrying,
-        ToolEffect toolEffect,
+    private void SetAnimationParameters(float xInput, float yInput, bool isWalking, bool isRunning, bool isIdle, bool isCarrying, ToolEffect toolEffect,
         bool isUsingToolRight, bool isUsingToolLeft, bool isUsingToolUp, bool isUsingToolDown,
         bool isLiftingToolRight, bool isLiftingToolLeft, bool isLiftingToolUp, bool isLiftingToolDown,
         bool isPickingRight, bool isPickingLeft, bool isPickingUp, bool isPickingDown,
@@ -89,6 +84,6 @@ public class MovementAnimationParameterControl : MonoBehaviour
 
     private void AnimationEventPlayFootstepSound()
     {
-
+        AudioManager.Instance.PlaySound(SoundName.effectFootstepHardGround);
     }
 }

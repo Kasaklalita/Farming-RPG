@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 [System.Serializable]
 public class SceneSave
@@ -9,7 +9,6 @@ public class SceneSave
     public Dictionary<string, Vector3Serializable> vector3Dictionary;
     public Dictionary<string, int[]> intArrayDictionary;
     public List<SceneItem> listSceneItem;
-    public List<InventoryItem>[] listInvItemArray;
-
     public Dictionary<string, GridPropertyDetails> gridPropertyDetailsDictionary;
+    public List<InventoryItem>[] listInvItemArray;
 }

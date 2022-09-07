@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ItemPickUp : MonoBehaviour
 {
@@ -6,15 +6,20 @@ public class ItemPickUp : MonoBehaviour
     {
         Item item = collision.GetComponent<Item>();
 
-
         if (item != null)
         {
-            //Get item details
+            // Get item details
             ItemDetails itemDetails = InventoryManager.Instance.GetItemDetails(item.ItemCode);
-            
-            if (itemDetails.canBePickedUp)
+
+            // if item can be picked up
+            if (itemDetails.canBePickedUp == true)
             {
+                // Add item to inventory
                 InventoryManager.Instance.AddItem(InventoryLocation.player, item, collision.gameObject);
+
+                // Play pick up sound
+                AudioManager.Instance.PlaySound(SoundName.effectPickupSound);
+
             }
         }
     }
