@@ -88,6 +88,8 @@ public enum SceneName
     BelesweltUp,
     Scene_CoastalCave,
     House1,
+    House2_1,
+    House2_2,
     House5,
 }
 
