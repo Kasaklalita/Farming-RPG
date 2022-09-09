@@ -83,8 +83,8 @@ public enum SceneName
     Scene1_Farm,
     Scene2_Field,
     Scene3_Cabin,
-    Scene_Village,
-    Scene_VillageRight,
+    Beleswelt,
+    BelesweltRight,
     BelesweltUp,
     Scene_CoastalCave,
     House1,
@@ -92,7 +92,15 @@ public enum SceneName
     House2_2,
     House3_1,
     House3_2,
+    House4,
     House5,
+    House6_1,
+    House6_2,
+    House7,
+    House8,
+    House9,
+    House10_1,
+    House10_2,
 }
 
 public enum Season
