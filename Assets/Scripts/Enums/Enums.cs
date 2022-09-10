@@ -101,7 +101,11 @@ public enum SceneName
     House9,
     House10_1,
     House10_2,
-    BelesweltFarm
+    BelesweltFarm,
+    BelesweltDown,
+    BelesweltInterfluve,
+    CoastRight,
+    CoastLeft
 }
 
 public enum Season

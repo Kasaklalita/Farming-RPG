@@ -10093,6 +10093,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 735910792a3ecad47b9291dcae627b19, type: 2}
   - {fileID: 11400000, guid: 958651055fc93da48a7903be71d17a3b, type: 2}
   - {fileID: 11400000, guid: d9bf74ea20f4bac4dbe0805cd8091574, type: 2}
+  - {fileID: 11400000, guid: 54d76808a7c03ad4c9711289394c6785, type: 2}
+  - {fileID: 11400000, guid: b9a079b9332f7784a8eadf00b2fbe1af, type: 2}
+  - {fileID: 11400000, guid: 004b5a7031668c549962725d4a670ae9, type: 2}
+  - {fileID: 11400000, guid: 64a3af2aeff05dd4d99550bf8fc449d0, type: 2}
   dugGround:
   - {fileID: 11400000, guid: 4c561b6c2fe966e45abda09480d86fd3, type: 2}
   - {fileID: 11400000, guid: 715415cff8acb314c9d6dc9a877b10d1, type: 2}
